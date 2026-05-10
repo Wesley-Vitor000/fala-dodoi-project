@@ -3,7 +3,7 @@ let alertasAbertoId = null;
 
 
 async function buscarAlertasSalvos() {
-  const resposta = await fetch("https://fala-dodoi-project.onrender.com/alerta");   // Substitua pela URL correta do seu backend
+  const resposta = await fetch("https://fala-dodoi-project.onrender.com/alertas");   // Substitua pela URL correta do seu backend
   
   const dados = await resposta.json(); // Supondo que a resposta seja um objeto com uma propriedade "alertas" que é uma lista
 
