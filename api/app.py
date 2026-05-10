@@ -43,5 +43,37 @@ def limpar_alertas():
 
     return {"message": "Alertas removidos com sucesso"}
 
+
+# Aqui, criamos um endpoint para receber os alertas enviados para a Comissão de Dor. Ele espera receber um JSON com as informações do alerta, que são então armazenadas em um arquivo chamado "alertas_comissao.json". Cada novo alerta é adicionado à lista existente de alertas no arquivo. O endpoint retorna uma mensagem de sucesso após salvar o alerta.
+@app.route("/alerta-comissao", methods=["POST"])
+def criar_alerta_comissao():
+    dados = request.get_json()
+
+    with open("alertas_comissao.json", "r") as arquivo:
+        alertas = json.load(arquivo)
+
+    alertas.insert(0, dados)
+
+    with open("alertas_comissao.json", "w") as arquivo:
+        json.dump(alertas, arquivo, indent=4, ensure_ascii=False)
+
+    return {"message": "Alerta enviado para Comissão de Dor"}, 201
+
+
+@app.route("/alertas-comissao", methods=["GET"])
+def listar_alertas_comissao():
+    with open("alertas_comissao.json", "r") as arquivo:
+        alertas = json.load(arquivo)
+
+    return {"alertas": alertas}
+
+
+@app.route("/alertas-comissao", methods=["DELETE"])
+def limpar_alertas_comissao():
+    with open("alertas_comissao.json", "w") as arquivo:
+        json.dump([], arquivo, indent=4)
+
+    return {"message": "Alertas da Comissão removidos com sucesso"}
+
 if __name__ == "__main__":
     app.run(debug=True)

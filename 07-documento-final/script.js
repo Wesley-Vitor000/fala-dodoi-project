@@ -851,3 +851,72 @@ if (btnAbrirPainel) {
     window.open("../08-painel-alertas/index.html", "_blank");
   });
 }
+
+async function enviarAlertaComissaoDor(dados, analiseProtocolo) {
+  const jaEnviado = sessionStorage.getItem("alertaComissaoDorEnviado");
+
+  if (jaEnviado === "sim") {
+    return;
+  }
+
+  sessionStorage.setItem("alertaComissaoDorEnviado", "sim");
+
+  const alertaComissao = {
+    id: Date.now(),
+    codigoCaso: `FD-${Date.now()}`,
+    dataHora: new Date().toLocaleString("pt-BR"),
+
+    hospital: "Hospital Universitário",
+    setor: "Emergência Pediátrica",
+
+    paciente: {
+      nome: dados.paciente.nome || "Paciente não identificado",
+      idade: dados.paciente.idade || "Não informada",
+      sexo: dados.paciente.sexo || "Não informado",
+      prontuario: dados.paciente.prontuario || "Não informado"
+    },
+
+    score: analiseProtocolo.soma || 0,
+    risco: analiseProtocolo.classificacao.nivel,
+    status: analiseProtocolo.classificacao.status,
+    sintomas: analiseProtocolo.sintomasTexto,
+    locais: dados.locais,
+    intensidade: dados.intensidade ? dados.intensidade.valor : "Não informada",
+    comportamentosTea: dados.tea.itens || [],
+    observacoesTea: dados.tea.observacoes || "Nenhuma observação registrada.",
+
+    interpretacao: analiseProtocolo.interpretacaoClinica,
+    mensagem: analiseProtocolo.mensagemComissao || analiseProtocolo.alertaTexto,
+
+    condutasSugeridas: [
+      "Reavaliação multiprofissional imediata",
+      "Revisão da analgesia",
+      "Redução de estímulos sensoriais",
+      "Monitorização contínua",
+      "Registro obrigatório da conduta adotada"
+    ],
+
+    linhaTempo: [
+      "Entrada na triagem",
+      "Coleta de sinais e comportamento",
+      "Geração do protocolo clínico",
+      "Classificação de risco elevada",
+      "Alerta automático enviado para Comissão de Dor"
+    ],
+
+    condutasRealizadas: [
+      {
+        nome: "Protocolo Fala Dodói gerado",
+        resposta: "Pendente de avaliação da Comissão"
+      }
+    ]
+  };
+
+  await fetch("https://fala-dodoi-project.onrender.com/alerta-comissao", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(alertaComissao)
+  });
+}
