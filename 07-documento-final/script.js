@@ -818,21 +818,23 @@ async function salvarAlertaNoPainel(dados, analiseProtocolo) {
     body: JSON.stringify(novoAlerta)
   });
 }
-
+const btnSalvarAlerta = document.getElementById("btn-salvar-alerta");
 const btnAbrirPainel = document.getElementById("btn-abrir-painel");
+
+if (btnSalvarAlerta) {
+  btnSalvarAlerta.addEventListener("click", async () => {
+    try {
+      await salvarAlertaNoPainel(dados, analiseProtocolo);
+      alert("Dados enviados para o painel com sucesso!");
+    } catch (erro) {
+      console.error("Erro ao enviar alerta:", erro);
+      alert("Erro ao enviar os dados para o painel.");
+    }
+  });
+}
 
 if (btnAbrirPainel) {
   btnAbrirPainel.addEventListener("click", () => {
     window.open("../08-painel-alertas/index.html", "_blank");
-  });
-}
-
-const btnSalvarAlerta = document.getElementById("btn-salvar-alerta");
-
-if (btnSalvarAlerta) {
-  btnSalvarAlerta.addEventListener("click", async () => {
-    await salvarAlertaNoPainel(dados, analiseProtocolo);
-
-    alert("Dados salvos e enviados para o painel de alertas!");
   });
 }
