@@ -6,7 +6,6 @@ const chaveAnamnese = 'anamneseTriagem';
 const chaveTea = 'protocoloTeaTriagem';
 
 const btnVoltar = document.getElementById('btn-voltar');
-const btnImprimir = document.getElementById('btn-imprimir');
 const btnNovaTriagem = document.getElementById('btn-nova-triagem');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -796,13 +795,6 @@ btnNovaTriagem.addEventListener('click', () => {
 
 
 async function salvarAlertaNoPainel(dados, analiseProtocolo) {
-  const alertaJaEnviado = sessionStorage.getItem('alertaFalaDodoiEnviado');
-
-  if (alertaJaEnviado === 'sim') {
-    return;
-  }
-
-  sessionStorage.setItem('alertaFalaDodoiEnviado', 'sim');
 
   const novoAlerta = {
     id: Date.now(),
@@ -832,5 +824,15 @@ const btnAbrirPainel = document.getElementById("btn-abrir-painel");
 if (btnAbrirPainel) {
   btnAbrirPainel.addEventListener("click", () => {
     window.open("../08-painel-alertas/index.html", "_blank");
+  });
+}
+
+const btnSalvarAlerta = document.getElementById("btn-salvar-alerta");
+
+if (btnSalvarAlerta) {
+  btnSalvarAlerta.addEventListener("click", async () => {
+    await salvarAlertaNoPainel(dados, analiseProtocolo);
+
+    alert("Dados salvos e enviados para o painel de alertas!");
   });
 }
