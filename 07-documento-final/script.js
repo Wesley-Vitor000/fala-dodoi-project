@@ -5,6 +5,9 @@ const chaveDesconforto = 'desconfortosTriagem';
 const chaveAnamnese = 'anamneseTriagem';
 const chaveTea = 'protocoloTeaTriagem';
 
+let dadosGlobais;
+let analiseGlobal;
+
 const btnVoltar = document.getElementById('btn-voltar');
 const btnNovaTriagem = document.getElementById('btn-nova-triagem');
 
@@ -726,7 +729,7 @@ function preencherDocumento() {
   document.getElementById('doc-tea').textContent = tea.itens.length ? tea.itens.join(', ') : '-';
   document.getElementById('doc-tea-obs').textContent = tea.observacoes || '-';
 
-  const dados = {
+  dadosGlobais = {
     paciente,
     locais,
     intensidade,
@@ -735,36 +738,36 @@ function preencherDocumento() {
     tea
   };
 
-  const analiseProtocolo = gerarAnaliseProtocolo(desconfortos);
+  analiseGlobal = gerarAnaliseProtocolo(desconfortos);
 
-  document.getElementById('texto-clinico-final').textContent = montarTextoClinico(dados);
+  document.getElementById('texto-clinico-final').textContent = montarTextoClinico(dadosGlobais);
 
   const sintomasPontuados = document.getElementById('doc-sintomas-pontuados');
   if (sintomasPontuados) {
-    sintomasPontuados.textContent = analiseProtocolo.sintomasTexto;
+    sintomasPontuados.textContent = analiseGlobal.sintomasTexto;
   }
 
   document.getElementById('doc-pontuacao-protocolo').textContent =
-    analiseProtocolo.interpretacaoClinica;
+    analiseGlobal.interpretacaoClinica;
 
   document.getElementById('doc-classificacao-protocolo').textContent =
-    `${analiseProtocolo.classificacao.emoji} ${analiseProtocolo.classificacao.nivel}`;
+    `${analiseGlobal.classificacao.emoji} ${analiseGlobal.classificacao.nivel}`;
 
-  document.getElementById('doc-recomendacoes').innerHTML = analiseProtocolo.medidasHtml;
+  document.getElementById('doc-recomendacoes').innerHTML = analiseGlobal.medidasHtml;
 
   const cardRisco = document.getElementById('card-risco');
   const riscoIcone = document.getElementById('risco-icone');
 
-  cardRisco.classList.add(analiseProtocolo.classificacao.classe);
-  riscoIcone.textContent = analiseProtocolo.classificacao.emoji;
+  cardRisco.classList.add(analiseGlobal.classificacao.classe);
+  riscoIcone.textContent = analiseGlobal.classificacao.emoji;
 
   const blocoAlerta = document.getElementById('bloco-alerta-clinico');
 
-  if (analiseProtocolo.alertaAtivo) {
+  if (analiseGlobal.alertaAtivo) {
     blocoAlerta.classList.remove('oculto');
-    document.getElementById('doc-alerta-clinico').textContent = analiseProtocolo.alertaTexto;
-    document.getElementById('doc-mensagem-comissao').textContent = analiseProtocolo.mensagemComissao;
-    salvarAlertaNoPainel(dados, analiseProtocolo);
+    document.getElementById('doc-alerta-clinico').textContent = analiseGlobal.alertaTexto;
+    document.getElementById('doc-mensagem-comissao').textContent = analiseGlobal.mensagemComissao;
+    salvarAlertaNoPainel(dadosGlobais, analiseGlobal);
   }
 }
 
@@ -794,7 +797,7 @@ btnNovaTriagem.addEventListener('click', () => {
 });
 
 
-async function salvarAlertaNoPainel(dados, analiseProtocolo) {
+async function salvarAlertaNoPainel(dadosGlobais, analiseGlobal) {
 
   const novoAlerta = {
     id: Date.now(),
@@ -803,9 +806,9 @@ async function salvarAlertaNoPainel(dados, analiseProtocolo) {
     prontuario: dados.paciente.prontuario || "Não informado",
     locais: dados.locais,
     intensidade: dados.intensidade ? dados.intensidade.valor : "Não informada",
-    sintomas: analiseProtocolo.sintomasTexto,
-    classificacao: analiseProtocolo.classificacao.nivel,
-    mensagem: analiseProtocolo.alertaTexto,
+    sintomas: analiseGlobal.sintomasTexto,
+    classificacao: analiseGlobal.classificacao.nivel,
+    mensagem: analiseGlobal.alertaTexto,
     dataHora: new Date().toLocaleString("pt-BR"),
     status: "emergencia"
   };
