@@ -5,11 +5,12 @@ const chaveDesconforto = 'desconfortosTriagem';
 const chaveAnamnese = 'anamneseTriagem';
 const chaveTea = 'protocoloTeaTriagem';
 
-let dadosGlobais;
-let analiseGlobal;
-
 const btnVoltar = document.getElementById('btn-voltar');
 const btnNovaTriagem = document.getElementById('btn-nova-triagem');
+const btnImprimir = document.getElementById('btn-imprimir');
+
+let dadosGlobais = null;
+let analiseGlobal = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   preencherDocumento();
@@ -767,7 +768,6 @@ function preencherDocumento() {
     blocoAlerta.classList.remove('oculto');
     document.getElementById('doc-alerta-clinico').textContent = analiseGlobal.alertaTexto;
     document.getElementById('doc-mensagem-comissao').textContent = analiseGlobal.mensagemComissao;
-    salvarAlertaNoPainel(dadosGlobais, analiseGlobal);
   }
 }
 
@@ -784,9 +784,11 @@ btnVoltar.addEventListener('click', () => {
   window.location.href = '../06-protocolo-tea/index.html';
 });
 
-btnImprimir.addEventListener('click', () => {
-  window.print();
-});
+if (btnImprimir) {
+  btnImprimir.addEventListener('click', () => {
+    window.print();
+  });
+}
 
 btnNovaTriagem.addEventListener('click', () => {
   const confirmar = confirm('Deseja iniciar uma nova triagem? Os dados atuais serão apagados.');
@@ -797,7 +799,11 @@ btnNovaTriagem.addEventListener('click', () => {
 });
 
 
-async function salvarAlertaNoPainel(dadosGlobais, analiseGlobal) {
+async function salvarAlertaNoPainel(dados, analiseProtocolo) {
+
+  if (!dados || !analiseProtocolo) {
+    throw new Error('Dados da triagem ainda não foram carregados.');
+  }
 
   const novoAlerta = {
     id: Date.now(),
@@ -806,20 +812,24 @@ async function salvarAlertaNoPainel(dadosGlobais, analiseGlobal) {
     prontuario: dados.paciente.prontuario || "Não informado",
     locais: dados.locais,
     intensidade: dados.intensidade ? dados.intensidade.valor : "Não informada",
-    sintomas: analiseGlobal.sintomasTexto,
-    classificacao: analiseGlobal.classificacao.nivel,
-    mensagem: analiseGlobal.alertaTexto,
+    sintomas: analiseProtocolo.sintomasTexto,
+    classificacao: analiseProtocolo.classificacao.nivel,
+    mensagem: analiseProtocolo.alertaTexto || "Triagem finalizada",
     dataHora: new Date().toLocaleString("pt-BR"),
     status: "emergencia"
   };
 
-  await fetch("https://fala-dodoi-project.onrender.com/alerta", {
+  const resposta = await fetch("https://fala-dodoi-project.onrender.com/alerta", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(novoAlerta)
   });
+
+  if (!resposta.ok) {
+    throw new Error('Erro na API ao salvar alerta.');
+  }
 }
 const btnSalvarAlerta = document.getElementById("btn-salvar-alerta");
 const btnAbrirPainel = document.getElementById("btn-abrir-painel");
