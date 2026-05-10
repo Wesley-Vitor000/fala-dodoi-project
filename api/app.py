@@ -34,5 +34,14 @@ def listar_alertas():
 
     return {"alertas": alertas}
 
+# Aqui, criamos um endpoint para limpar a lista de alertas. Ele sobrescreve o arquivo "alertas.json" com uma lista vazia, efetivamente removendo todos os alertas armazenados. O endpoint retorna uma mensagem de sucesso após limpar os alertas.
+@app.route("/alertas", methods=["DELETE"])
+def limpar_alertas():
+
+    with open("alertas.json", "w") as arquivo:
+        json.dump([], arquivo)
+
+    return {"message": "Alertas removidos com sucesso"}
+
 if __name__ == "__main__":
     app.run(debug=True)

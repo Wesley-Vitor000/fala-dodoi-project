@@ -160,3 +160,20 @@ document.getElementById("btn-atendido").addEventListener("click", () => {
 
   atualizarPainel();
 });
+
+const btnLimpar = document.getElementById("btn-limpar-alertas");
+
+btnLimpar.addEventListener("click", async () => {
+
+  const confirmar = confirm("Deseja apagar todos os alertas?");
+
+  if (!confirmar) {
+    return;
+  }
+
+  await fetch("https://fala-dodoi-project.onrender.com/alertas", {
+    method: "DELETE"
+  });
+
+  atualizarPainel();
+});
