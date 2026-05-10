@@ -826,3 +826,11 @@ async function salvarAlertaNoPainel(dados, analiseProtocolo) {
     body: JSON.stringify(novoAlerta)
   });
 }
+
+const btnAbrirPainel = document.getElementById("btn-abrir-painel");
+
+if (btnAbrirPainel) {
+  btnAbrirPainel.addEventListener("click", () => {
+    window.open("../08-painel-alertas/index.html", "_blank");
+  });
+}
