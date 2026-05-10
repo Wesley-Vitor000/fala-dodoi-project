@@ -1,125 +1,195 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Fala Dodói - Comissão de Dor</title>
+    <title>Fala Dodói - Comissão de Dor</title>
 
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <header class="topo">
-    <div>
-      <p class="subtitulo">Fala Dodói</p>
-      <h1>Alerta Inteligente — Comissão de Dor</h1>
-    </div>
-
-    <div class="info-caso">
-      <strong id="codigo-caso">Caso #---</strong>
-      <span id="data-hora">--/--/----</span>
-    </div>
-
-    <span id="badge-risco" class="badge-risco">Aguardando</span>
-  </header>
-
-  <main class="container">
-
-    <section class="alerta-principal">
-      <div>
-        <p class="alerta-label">⚠️ Alerta clínico automático</p>
-        <h2 id="titulo-alerta">Nenhum alerta crítico carregado</h2>
-        <p id="mensagem-alerta">
-          Aguardando envio do sistema Fala Dodói.
-        </p>
-      </div>
-
-      <div class="score-box">
-        <span>Score</span>
-        <strong id="score-atual">0</strong>
-      </div>
-    </section>
-
-    <section class="grid">
-
-      <article class="card">
-        <h3>👤 Identificação do paciente</h3>
-        <p><strong>Nome:</strong> <span id="paciente-nome">-</span></p>
-        <p><strong>Idade:</strong> <span id="paciente-idade">-</span></p>
-        <p><strong>Sexo:</strong> <span id="paciente-sexo">-</span></p>
-        <p><strong>Prontuário:</strong> <span id="paciente-prontuario">-</span></p>
-      </article>
-
-      <article class="card">
-        <h3>📈 Escore clínico inteligente</h3>
-
-        <div class="barra-score">
-          <div id="barra-score-preenchida"></div>
+    <header class="topo">
+        <div>
+            <p class="subtitulo">Fala Dodói</p>
+            <h1>Alerta Inteligente — Comissão de Dor</h1>
         </div>
 
-        <p><strong>Risco:</strong> <span id="risco-texto">-</span></p>
-        <p><strong>Intensidade:</strong> <span id="intensidade">-</span></p>
-        <p><strong>Locais:</strong> <span id="locais">-</span></p>
-      </article>
+        <div class="info-caso">
+            <strong id="codigo-caso">Caso #---</strong>
+            <span id="data-hora">--/--/----</span>
+        </div>
 
-      <article class="card">
-        <h3>🧩 Indicadores registrados</h3>
-        <div id="sinais-lista" class="chips"></div>
-      </article>
+        <span id="badge-risco" class="badge-risco">Aguardando</span>
+    </header>
 
-      <article class="card">
-        <h3>♾️ Protocolo TEA</h3>
-        <div id="tea-lista" class="chips"></div>
-        <p id="tea-observacoes" class="texto-secundario"></p>
-      </article>
+    <main class="container">
 
-    </section>
+        <section class="alerta-principal">
+            <div>
+                <p class="alerta-label">⚠️ Alerta clínico automático</p>
+                <h2 id="titulo-alerta">Nenhum alerta crítico carregado</h2>
+                <p id="mensagem-alerta">
+                    Aguardando envio do sistema Fala Dodói.
+                </p>
+            </div>
 
-    <section class="card destaque">
-      <h3>🤖 Interpretação automática do sistema</h3>
-      <p id="interpretacao">
-        Nenhuma interpretação disponível.
-      </p>
-    </section>
+            <div class="score-box">
+                <span>Score</span>
+                <strong id="score-atual">0</strong>
+            </div>
+        </section>
 
-    <section class="grid">
+        <section class="grid">
 
-      <article class="card">
-        <h3>🕘 Evolução do caso</h3>
-        <ul id="linha-tempo" class="timeline"></ul>
-      </article>
+            <article class="card">
+                <h3>👤 Identificação do paciente</h3>
+                <p><strong>Nome:</strong> <span id="paciente-nome">-</span></p>
+                <p><strong>Idade:</strong> <span id="paciente-idade">-</span></p>
+                <p><strong>Sexo:</strong> <span id="paciente-sexo">-</span></p>
+                <p><strong>Prontuário:</strong> <span id="paciente-prontuario">-</span></p>
+            </article>
 
-      <article class="card">
-        <h3>🩺 Condutas sugeridas</h3>
-        <ul id="condutas-lista" class="lista-condutas"></ul>
-      </article>
+            <article class="card">
+                <h3>📈 Escore clínico inteligente</h3>
 
-    </section>
+                <div class="barra-score">
+                    <div id="barra-score-preenchida"></div>
+                </div>
 
-    <section class="card decisao">
-      <h3>✅ Conduta da Comissão de Dor</h3>
+                <p><strong>Risco:</strong> <span id="risco-texto">-</span></p>
+                <p><strong>Intensidade:</strong> <span id="intensidade">-</span></p>
+                <p><strong>Locais:</strong> <span id="locais">-</span></p>
+            </article>
 
-      <div class="acoes">
-        <button data-conduta="Revisar caso">Revisar caso</button>
-        <button data-conduta="Solicitar reavaliação médica">Solicitar reavaliação médica</button>
-        <button data-conduta="Revisar analgesia">Revisar analgesia</button>
-        <button data-conduta="Acionar multiprofissional">Acionar multiprofissional</button>
-        <button data-conduta="Manter monitorização">Manter monitorização</button>
-      </div>
+            <article class="card">
+                <h3>🧩 Indicadores registrados</h3>
+                <div id="sinais-lista" class="chips"></div>
+            </article>
 
-      <label for="registro-comissao">Registro da comissão</label>
-      <textarea id="registro-comissao" placeholder="Descreva a conduta adotada pela Comissão de Dor..."></textarea>
+            <article class="card">
+                <h3>♾️ Protocolo TEA</h3>
+                <div id="tea-lista" class="chips"></div>
+                <p id="tea-observacoes" class="texto-secundario"></p>
+            </article>
 
-      <button id="btn-encerrar-alerta" class="btn-finalizar">
-        Encerrar alerta
-      </button>
+        </section>
 
-      <p id="mensagem-bloqueio" class="mensagem-bloqueio"></p>
-    </section>
+        <section class="grid">
+            <article class="card">
+                <h3>🏥 Dados assistenciais</h3>
+                <p><strong>Hospital:</strong> <span id="hospital">-</span></p>
+                <p><strong>Setor:</strong> <span id="setor">-</span></p>
+                <p><strong>Leito:</strong> <span id="leito">Não informado</span></p>
+                <p><strong>Profissional responsável:</strong> <span id="profissional">Sistema Fala Dodói</span></p>
+            </article>
 
-  </main>
+            <article class="card">
+                <h3>📊 Tendência clínica</h3>
+                <p><strong>Tempo desde última melhora:</strong> <span id="tempo-melhora">Sem melhora registrada</span>
+                </p>
+                <p><strong>Quantidade de reavaliações:</strong> <span id="qtd-reavaliacoes">1</span></p>
+                <p><strong>Velocidade de progressão:</strong> <span id="progressao">Progressão rápida</span></p>
+                <p><strong>Persistência dos sintomas:</strong> <span id="persistencia">Persistente</span></p>
+            </article>
+        </section>
 
-  <script src="script.js"></script>
+        <section class="card">
+            <h3>🚨 Priorização automática</h3>
+
+            <div class="prioridade-grid">
+                <div>
+                    <span>Classificação</span>
+                    <strong id="prioridade-classificacao">-</strong>
+                </div>
+
+                <div>
+                    <span>Tempo sugerido</span>
+                    <strong id="prioridade-tempo">-</strong>
+                </div>
+
+                <div>
+                    <span>Critérios usados</span>
+                    <strong id="prioridade-criterios">Score, persistência e comportamento</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3>🩺 Intervenções já realizadas</h3>
+
+            <div class="tabela-responsiva">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Intervenção</th>
+                            <th>Horário</th>
+                            <th>Resposta</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabela-intervencoes">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="rodape-sistema">
+            <p><strong>Gerado por:</strong> Sistema Fala Dodói</p>
+            <p><strong>Versão do protocolo:</strong> 1.0 acadêmica</p>
+            <p><strong>Assinatura digital:</strong> FD-SISTEMA-COMISSAO-DOR</p>
+            <p><strong>Status do caso:</strong> <span id="status-caso">Em análise</span></p>
+        </footer>
+
+        <section class="card destaque">
+            <h3>🤖 Interpretação automática do sistema</h3>
+            <p id="interpretacao">
+                Nenhuma interpretação disponível.
+            </p>
+        </section>
+
+        <section class="grid">
+
+            <article class="card">
+                <h3>🕘 Evolução do caso</h3>
+                <ul id="linha-tempo" class="timeline"></ul>
+            </article>
+
+            <article class="card">
+                <h3>🩺 Condutas sugeridas</h3>
+                <ul id="condutas-lista" class="lista-condutas"></ul>
+            </article>
+
+        </section>
+
+        <section class="card decisao">
+            <h3>✅ Conduta da Comissão de Dor</h3>
+
+            <div class="acoes">
+                <button data-conduta="Revisar caso">Revisar caso</button>
+                <button data-conduta="Solicitar reavaliação médica">Solicitar reavaliação médica</button>
+                <button data-conduta="Revisar analgesia">Revisar analgesia</button>
+                <button data-conduta="Acionar multiprofissional">Acionar multiprofissional</button>
+                <button data-conduta="Manter monitorização">Manter monitorização</button>
+            </div>
+
+            <label for="registro-comissao">Registro da comissão</label>
+            <textarea id="registro-comissao"
+                placeholder="Descreva a conduta adotada pela Comissão de Dor..."></textarea>
+
+            <button id="btn-encerrar-alerta" class="btn-finalizar">
+                Encerrar alerta
+            </button>
+
+            <p id="mensagem-bloqueio" class="mensagem-bloqueio"></p>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
+
 </html>

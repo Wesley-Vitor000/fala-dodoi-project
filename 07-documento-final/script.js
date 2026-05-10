@@ -12,6 +12,9 @@ const btnImprimir = document.getElementById('btn-imprimir');
 let dadosGlobais = null;
 let analiseGlobal = null;
 
+const API_ALERTA_GERAL = "https://fala-dodoi-project.onrender.com/alerta";
+const API_ALERTA_COMISSAO = "https://fala-dodoi-project.onrender.com/alerta-comissao";
+
 document.addEventListener('DOMContentLoaded', () => {
   preencherDocumento();
 });
@@ -690,7 +693,7 @@ function montarTextoClinico(dados) {
 /* ========================= */
 
 function preencherDocumento() {
-  const paciente = lerStorage(chavePaciente, { nome: '-', idade: '-', prontuario: '-' });
+  const paciente = lerStorage(chavePaciente, { nome: '-', idade: '-', sexo: '-', prontuario: '-' });
   const locais = lerStorage(chaveLocais, []);
   const intensidade = lerStorage(chaveIntensidade, null);
   const desconfortos = lerStorage(chaveDesconforto, []);
@@ -768,6 +771,11 @@ function preencherDocumento() {
     blocoAlerta.classList.remove('oculto');
     document.getElementById('doc-alerta-clinico').textContent = analiseGlobal.alertaTexto;
     document.getElementById('doc-mensagem-comissao').textContent = analiseGlobal.mensagemComissao;
+
+    enviarAlertaComissaoDor(dadosGlobais, analiseGlobal)
+      .catch((erro) => {
+        console.error('Erro ao enviar alerta automático para Comissão de Dor:', erro);
+      });
   }
 }
 
@@ -778,11 +786,15 @@ function limparTriagemCompleta() {
   localStorage.removeItem(chaveDesconforto);
   localStorage.removeItem(chaveAnamnese);
   localStorage.removeItem(chaveTea);
+
+  sessionStorage.removeItem('alertaComissaoDorEnviado');
 }
 
-btnVoltar.addEventListener('click', () => {
-  window.location.href = '../06-protocolo-tea/index.html';
-});
+if (btnVoltar) {
+  btnVoltar.addEventListener('click', () => {
+    window.location.href = '../06-protocolo-tea/index.html';
+  });
+}
 
 if (btnImprimir) {
   btnImprimir.addEventListener('click', () => {
@@ -790,13 +802,15 @@ if (btnImprimir) {
   });
 }
 
-btnNovaTriagem.addEventListener('click', () => {
-  const confirmar = confirm('Deseja iniciar uma nova triagem? Os dados atuais serão apagados.');
-  if (!confirmar) return;
+if (btnNovaTriagem) {
+  btnNovaTriagem.addEventListener('click', () => {
+    const confirmar = confirm('Deseja iniciar uma nova triagem? Os dados atuais serão apagados.');
+    if (!confirmar) return;
 
-  limparTriagemCompleta();
-  window.location.href = '../01-identificacao/index.html';
-});
+    limparTriagemCompleta();
+    window.location.href = '../01-identificacao/index.html';
+  });
+}
 
 
 async function salvarAlertaNoPainel(dados, analiseProtocolo) {
@@ -819,7 +833,7 @@ async function salvarAlertaNoPainel(dados, analiseProtocolo) {
     status: "emergencia"
   };
 
-  const resposta = await fetch("https://fala-dodoi-project.onrender.com/alerta", {
+  const resposta = await fetch(API_ALERTA_GERAL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -833,15 +847,21 @@ async function salvarAlertaNoPainel(dados, analiseProtocolo) {
 }
 const btnSalvarAlerta = document.getElementById("btn-salvar-alerta");
 const btnAbrirPainel = document.getElementById("btn-abrir-painel");
+const btnAbrirComissao = document.getElementById("btn-abrir-comissao");
 
 if (btnSalvarAlerta) {
   btnSalvarAlerta.addEventListener("click", async () => {
     try {
       await salvarAlertaNoPainel(dadosGlobais, analiseGlobal);
-      alert("Dados enviados para o painel com sucesso!");
+
+      if (analiseGlobal && (analiseGlobal.alertaAtivo || analiseGlobal.soma >= 25)) {
+        await enviarAlertaComissaoDor(dadosGlobais, analiseGlobal);
+      }
+
+      alert("Dados enviados com sucesso!");
     } catch (erro) {
       console.error("Erro ao enviar alerta:", erro);
-      alert("Erro ao enviar os dados para o painel.");
+      alert("Erro ao enviar os dados para o sistema de alertas.");
     }
   });
 }
@@ -852,14 +872,22 @@ if (btnAbrirPainel) {
   });
 }
 
+if (btnAbrirComissao) {
+  btnAbrirComissao.addEventListener("click", () => {
+    window.open("../09-alerta-comissao-dor/index.html", "_blank");
+  });
+}
+
 async function enviarAlertaComissaoDor(dados, analiseProtocolo) {
+  if (!dados || !analiseProtocolo) {
+    throw new Error('Dados da triagem ainda não foram carregados para a Comissão de Dor.');
+  }
+
   const jaEnviado = sessionStorage.getItem("alertaComissaoDorEnviado");
 
   if (jaEnviado === "sim") {
     return;
   }
-
-  sessionStorage.setItem("alertaComissaoDorEnviado", "sim");
 
   const alertaComissao = {
     id: Date.now(),
@@ -912,11 +940,25 @@ async function enviarAlertaComissaoDor(dados, analiseProtocolo) {
     ]
   };
 
-  await fetch("https://fala-dodoi-project.onrender.com/alerta-comissao", {
+  const resposta = await fetch(API_ALERTA_COMISSAO, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(alertaComissao)
+  });
+
+  if (!resposta.ok) {
+    throw new Error('Erro na API ao enviar alerta para Comissão de Dor.');
+  }
+
+  sessionStorage.setItem("alertaComissaoDorEnviado", "sim");
+}
+
+const btnAbrirComissao = document.getElementById("btn-abrir-comissao");
+
+if (btnAbrirComissao) {
+  btnAbrirComissao.addEventListener("click", () => {
+    window.open("../09-alerta-comissao-dor/index.html", "_blank");
   });
 }
