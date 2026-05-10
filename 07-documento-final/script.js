@@ -818,7 +818,7 @@ async function salvarAlertaNoPainel(dados, analiseProtocolo) {
     status: "emergencia"
   };
 
-  await fetch("http://127.0.0.1:5000/alerta", {
+  await fetch("https://fala-dodoi-project.onrender.com/alerta", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
