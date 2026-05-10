@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocolo TEA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="pagina-tea">
+    <header class="topo-tea">
+      <button class="btn-topo" id="btn-voltar" type="button">
+        ← Voltar
+      </button>
+
+      <div class="titulo-area">
+        <h1>Observações complementares (TEA)</h1>
+        <p>Marque os itens que se aplicam ao paciente durante a triagem</p>
+      </div>
+
+      <button class="btn-topo" id="btn-proximo" type="button">
+        Próximo →
+      </button>
+    </header>
+
+    <section class="painel-tea">
+      <div class="info-paciente" id="info-paciente"></div>
+
+      <div class="bloco-opcoes">
+        <label class="item-check">
+          <input type="checkbox" value="Dificuldade de comunicação verbal" class="check-tea">
+          <span>Dificuldade de comunicação verbal</span>
+        </label>
+
+        <label class="item-check">
+          <input type="checkbox" value="Contato visual reduzido" class="check-tea">
+          <span>Contato visual reduzido</span>
+        </label>
+
+        <label class="item-check">
+          <input type="checkbox" value="Hipersensibilidade sensorial" class="check-tea">
+          <span>Hipersensibilidade sensorial</span>
+        </label>
+
+        <label class="item-check">
+          <input type="checkbox" value="Agitação durante a avaliação" class="check-tea">
+          <span>Agitação durante a avaliação</span>
+        </label>
+
+        <label class="item-check">
+          <input type="checkbox" value="Necessidade de mediação do acompanhante" class="check-tea">
+          <span>Necessidade de mediação do acompanhante</span>
+        </label>
+
+        <label class="item-check">
+          <input type="checkbox" value="Dificuldade para compreender comandos simples" class="check-tea">
+          <span>Dificuldade para compreender comandos simples</span>
+        </label>
+
+        <label class="item-check">
+          <input type="checkbox" value="Sensibilidade ao toque ou manipulação" class="check-tea">
+          <span>Sensibilidade ao toque ou manipulação</span>
+        </label>
+
+        <label class="item-check">
+          <input type="checkbox" value="Maior conforto com comunicação visual" class="check-tea">
+          <span>Maior conforto com comunicação visual</span>
+        </label>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="observacoesTea">Observações complementares do protocolo</label>
+        <textarea id="observacoesTea" rows="5" placeholder="Descreva outras observações relevantes..."></textarea>
+      </div>
+
+      <div class="resumo-selecao">
+        <h2>Resumo do protocolo</h2>
+        <p id="texto-tea">Nenhuma observação selecionada ainda.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

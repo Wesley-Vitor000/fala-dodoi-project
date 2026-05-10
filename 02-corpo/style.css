@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e8f5f0 0%, #f0f9ff 100%);
+  min-height: 100vh;
+  color: #0f172a;
+}
+
+.pagina-corpo {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topo-corpo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 16px;
+  background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+  color: white;
+}
+
+.titulo-area {
+  flex: 1;
+  text-align: center;
+}
+
+.titulo-area h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.titulo-area p {
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+.grupo-topo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-topo {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-topo:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.btn-topo:active {
+  transform: scale(0.98);
+}
+
+.painel-corpo {
+  flex: 1;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 20px 16px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.info-paciente {
+  background: white;
+  border: 2px solid #dbeafe;
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: #0d9488;
+  font-weight: 600;
+  text-align: center;
+}
+
+.corpo-wrapper {
+  flex: 1;
+  background: white;
+  border: 2px solid #dbeafe;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  min-height: 420px;
+}
+
+.vista-corpo {
+  display: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.vista-corpo.ativa {
+  display: flex;
+}
+
+.corpo-svg {
+  width: min(100%, 420px);
+  height: auto;
+}
+
+.parte-corpo {
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease, opacity 0.15s ease;
+}
+
+.parte-corpo:hover {
+  filter: brightness(0.92) drop-shadow(0 0 6px rgba(13, 148, 136, 0.4));
+  transform: scale(1.02);
+}
+
+.parte-corpo:active {
+  transform: scale(0.98);
+}
+
+.parte-corpo.selecionada {
+  fill: #ef4444 !important;
+  stroke: #dc2626 !important;
+  stroke-width: 3 !important;
+  animation: pulsar 1.5s ease-in-out infinite;
+}
+
+g.parte-corpo.selecionada {
+  animation: pulsar 1.5s ease-in-out infinite;
+}
+
+g.parte-corpo.selecionada * {
+  fill: #ef4444 !important;
+  stroke: #dc2626 !important;
+  stroke-width: 3 !important;
+}
+
+@keyframes pulsar {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.78;
+  }
+}
+
+.resumo-selecao {
+  background: white;
+  border: 2px solid #dbeafe;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.resumo-selecao h2 {
+  font-family: 'Work Sans', sans-serif;
+  color: #0d9488;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.resumo-selecao p {
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* TABLET */
+@media (max-width: 768px) {
+  .topo-corpo {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+
+  .titulo-area h1 {
+    font-size: 1.2rem;
+  }
+
+  .titulo-area p {
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  .grupo-topo {
+    gap: 8px;
+  }
+
+  .btn-topo {
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
+
+  .painel-corpo {
+    padding: 18px 14px 24px;
+    gap: 16px;
+  }
+
+  .info-paciente {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .corpo-wrapper {
+    padding: 14px;
+    min-height: 390px;
+  }
+
+  .corpo-svg {
+    width: min(100%, 340px);
+  }
+}
+
+/* CELULAR */
+@media (max-width: 480px) {
+  .topo-corpo {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 12px;
+    gap: 8px;
+  }
+
+  .titulo-area {
+    order: -1;
+  }
+
+  .titulo-area h1 {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .titulo-area p {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .btn-topo {
+    padding: 9px 12px;
+    font-size: 0.86rem;
+    border-radius: 10px;
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .btn-voltar {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .grupo-topo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .grupo-topo .btn-topo {
+    width: 100%;
+  }
+
+  .painel-corpo {
+    padding: 16px 12px 20px;
+    gap: 14px;
+  }
+
+  .info-paciente {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .corpo-wrapper {
+    padding: 12px;
+    min-height: 360px;
+  }
+
+  .corpo-svg {
+    width: min(100%, 260px);
+  }
+
+  .resumo-selecao {
+    padding: 14px;
+  }
+
+  .resumo-selecao h2 {
+    font-size: 1rem;
+  }
+
+  .resumo-selecao p {
+    font-size: 0.95rem;
+  }
+}
+
+/* CELULAR BAIXO / LANDSCAPE */
+@media (max-height: 500px) and (orientation: landscape) {
+  .topo-corpo {
+    padding: 10px 14px;
+  }
+
+  .titulo-area h1 {
+    font-size: 1.05rem;
+  }
+
+  .titulo-area p {
+    font-size: 0.76rem;
+  }
+
+  .btn-topo {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .corpo-wrapper {
+    min-height: 300px;
+  }
+
+  .corpo-svg {
+    width: min(100%, 220px);
+  }
+}

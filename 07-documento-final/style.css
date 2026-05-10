@@ -1,0 +1,1188 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e8f5f0 0%, #f0f9ff 100%);
+  min-height: 100vh;
+  color: #0f172a;
+}
+
+.pagina-documento {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topo-documento {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 16px;
+  background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+  color: white;
+}
+
+.titulo-area {
+  flex: 1;
+  text-align: center;
+}
+
+.titulo-area h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.titulo-area p {
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+.grupo-topo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-topo {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-topo:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.btn-topo:active {
+  transform: scale(0.98);
+}
+
+.painel-documento {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 36px;
+}
+
+.documento-clinico {
+  background: white;
+  border: 2px solid #dbeafe;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.cabecalho-documento {
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.cabecalho-documento h2 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.6rem;
+  color: #0d9488;
+  margin-bottom: 6px;
+}
+
+.cabecalho-documento p {
+  color: #64748b;
+}
+
+.selo-manual {
+  background: linear-gradient(135deg, #ecfeff 0%, #f0fdfa 100%);
+  border: 2px solid #99f6e4;
+  color: #0f766e;
+  padding: 14px 16px;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.selo-manual span {
+  display: block;
+  font-weight: 500;
+  color: #475569;
+  font-size: 0.92rem;
+}
+
+.bloco-documento {
+  margin-bottom: 18px;
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 16px;
+  border-left: 4px solid #0ea5e9;
+}
+
+.bloco-documento h3 {
+  font-family: 'Work Sans', sans-serif;
+  color: #0d9488;
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+}
+
+.linha-info {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  color: #334155;
+  word-break: break-word;
+}
+
+.linha-info:last-child {
+  margin-bottom: 0;
+}
+
+.destaque {
+  background: #f0fdfa;
+  border-left-color: #0d9488;
+}
+
+#texto-clinico-final,
+#doc-recomendacoes {
+  color: #1e293b;
+  line-height: 1.8;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+/* CLASSIFICAÇÃO */
+
+.card-risco {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 2px solid #dbeafe;
+  background: white;
+  margin-bottom: 14px;
+}
+
+.risco-icone {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+#doc-classificacao-protocolo {
+  display: block;
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+#doc-pontuacao-protocolo {
+  color: #475569;
+  line-height: 1.5;
+}
+
+.risco-verde {
+  border-color: #86efac;
+  background: #dcfce7;
+}
+
+.risco-amarelo {
+  border-color: #fde047;
+  background: #fef9c3;
+}
+
+.risco-laranja {
+  border-color: #fb923c;
+  background: #fed7aa;
+}
+
+.risco-vermelho {
+  border-color: #f87171;
+  background: #fecaca;
+}
+
+.risco-neutro {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+/* ALERTA */
+
+.bloco-alerta {
+  background: #fef2f2;
+  border-left-color: #dc2626;
+  border: 2px solid #fecaca;
+}
+
+.bloco-alerta h3 {
+  color: #991b1b;
+}
+
+#doc-alerta-clinico {
+  color: #7f1d1d;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.mensagem-comissao {
+  margin-top: 14px;
+  background: white;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.mensagem-comissao strong {
+  color: #991b1b;
+}
+
+.mensagem-comissao p {
+  margin-top: 8px;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.oculto {
+  display: none;
+}
+
+/* TABLET */
+@media (max-width: 768px) {
+  .topo-documento {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+
+  .titulo-area h1 {
+    font-size: 1.2rem;
+  }
+
+  .titulo-area p {
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  .grupo-topo {
+    gap: 8px;
+  }
+
+  .btn-topo {
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
+
+  .painel-documento {
+    padding: 20px 14px 28px;
+  }
+
+  .documento-clinico {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .cabecalho-documento h2 {
+    font-size: 1.35rem;
+  }
+
+  .bloco-documento {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .bloco-documento h3 {
+    font-size: 1.05rem;
+  }
+
+  .linha-info {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  #texto-clinico-final,
+  #doc-recomendacoes {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+}
+
+/* CELULAR */
+@media (max-width: 480px) {
+  .topo-documento {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 12px;
+    gap: 8px;
+  }
+
+  .titulo-area {
+    order: -1;
+  }
+
+  .titulo-area h1 {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .titulo-area p {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .btn-topo {
+    padding: 9px 12px;
+    font-size: 0.86rem;
+    border-radius: 10px;
+  }
+
+  #btn-voltar {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .grupo-topo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .grupo-topo .btn-topo {
+    width: 100%;
+  }
+
+  .painel-documento {
+    padding: 16px 12px 20px;
+  }
+
+  .documento-clinico {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .cabecalho-documento {
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+  }
+
+  .cabecalho-documento h2 {
+    font-size: 1.2rem;
+    line-height: 1.25;
+  }
+
+  .cabecalho-documento p {
+    font-size: 0.9rem;
+  }
+
+  .selo-manual {
+    padding: 12px;
+    font-size: 0.92rem;
+  }
+
+  .selo-manual span {
+    font-size: 0.84rem;
+  }
+
+  .bloco-documento {
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+  }
+
+  .bloco-documento h3 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .linha-info {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  #texto-clinico-final,
+  #doc-recomendacoes {
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .card-risco {
+    align-items: flex-start;
+    padding: 14px;
+  }
+
+  .risco-icone {
+    width: 42px;
+    height: 42px;
+    font-size: 1.4rem;
+  }
+
+  #doc-classificacao-protocolo {
+    font-size: 1rem;
+  }
+}
+
+/* CELULAR BAIXO / LANDSCAPE */
+@media (max-height: 500px) and (orientation: landscape) {
+  .topo-documento {
+    padding: 10px 14px;
+  }
+
+  .titulo-area h1 {
+    font-size: 1.05rem;
+  }
+
+  .titulo-area p {
+    font-size: 0.76rem;
+  }
+
+  .btn-topo {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .painel-documento {
+    padding: 12px 14px 18px;
+  }
+
+  .documento-clinico {
+    padding: 14px;
+  }
+
+  .bloco-documento {
+    padding: 12px;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .topo-documento {
+    display: none;
+  }
+
+  .painel-documento {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .documento-clinico {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .bloco-documento {
+    background: white;
+    break-inside: avoid;
+  }
+
+  .selo-manual,
+  .card-risco,
+  .mensagem-comissao {
+    background: white;
+  }
+
+  .cabecalho-documento {
+    break-after: avoid;
+  }
+}
+
+/* ===================================================== */
+/* UPGRADE VISUAL DO PROTOCOLO CLÍNICO - FALA DODÓI      */
+/* Cole este bloco NO FINAL do style.css da página final  */
+/* ===================================================== */
+
+/* Esconde a linha técnica de sintomas pontuados na classificação.
+   O cálculo continua funcionando no JS, mas não aparece para o profissional. */
+.bloco-classificacao > .linha-info {
+  display: none;
+}
+
+/* Deixa a classificação do protocolo mais bonita */
+.bloco-classificacao {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef6ff 100%);
+  border-left-color: #0ea5e9;
+}
+
+.card-risco {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  border-width: 2px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.card-risco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.45), transparent);
+  pointer-events: none;
+}
+
+.risco-icone {
+  width: 58px;
+  height: 58px;
+  font-size: 1.9rem;
+  background: rgba(255,255,255,0.75);
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,0.35);
+}
+
+#doc-classificacao-protocolo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+#doc-pontuacao-protocolo {
+  margin-top: 6px;
+  max-width: 780px;
+  color: #334155;
+  font-size: 0.98rem;
+}
+
+/* ===================================================== */
+/* BLOCO PRINCIPAL DO PROTOCOLO                          */
+/* ===================================================== */
+
+#doc-recomendacoes {
+  line-height: 1.6;
+}
+
+.protocolo-clinico {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cabeçalho interno do protocolo */
+.protocolo-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 2px solid #dbeafe;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.protocolo-emoji {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: rgba(255,255,255,0.75);
+}
+
+.protocolo-cabecalho strong {
+  display: block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.protocolo-cabecalho p {
+  color: #334155;
+  font-weight: 600;
+}
+
+/* Cada seção do protocolo */
+.protocolo-grupo {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.protocolo-grupo h4 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.03rem;
+  color: #0f766e;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.protocolo-grupo:nth-of-type(2) h4::before {
+  content: "🧠";
+}
+
+.protocolo-grupo:nth-of-type(3) h4::before {
+  content: "🩺";
+}
+
+.protocolo-grupo:nth-of-type(4) h4::before {
+  content: "📋";
+}
+
+.protocolo-grupo:nth-of-type(5) h4::before {
+  content: "♾️";
+}
+
+.protocolo-grupo.conduta-final h4::before {
+  content: "🚨";
+}
+
+.protocolo-grupo p {
+  color: #334155;
+  line-height: 1.75;
+}
+
+.protocolo-grupo ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.protocolo-grupo li {
+  position: relative;
+  padding: 10px 12px 10px 38px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  color: #334155;
+  line-height: 1.55;
+}
+
+.protocolo-grupo li::before {
+  content: "✓";
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ccfbf1;
+  color: #0f766e;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.conduta-final {
+  border-color: #bae6fd;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ecfeff 100%);
+}
+
+.conduta-final p {
+  font-weight: 600;
+}
+
+/* ===================================================== */
+/* CORES POR CLASSIFICAÇÃO                               */
+/* ===================================================== */
+
+.protocolo-cabecalho.risco-verde,
+.card-risco.risco-verde {
+  background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+  border-color: #86efac;
+}
+
+.protocolo-cabecalho.risco-amarelo,
+.card-risco.risco-amarelo {
+  background: linear-gradient(135deg, #fef9c3 0%, #fffbeb 100%);
+  border-color: #fde047;
+}
+
+.protocolo-cabecalho.risco-laranja,
+.card-risco.risco-laranja {
+  background: linear-gradient(135deg, #fed7aa 0%, #fff7ed 100%);
+  border-color: #fb923c;
+}
+
+.protocolo-cabecalho.risco-vermelho,
+.card-risco.risco-vermelho {
+  background: linear-gradient(135deg, #fecaca 0%, #fff1f2 100%);
+  border-color: #f87171;
+}
+
+.protocolo-cabecalho.risco-neutro,
+.card-risco.risco-neutro {
+  background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+  border-color: #cbd5e1;
+}
+
+/* ===================================================== */
+/* MELHORA O BLOCO DE ALERTA                             */
+/* ===================================================== */
+
+.bloco-alerta {
+  background: linear-gradient(135deg, #fff1f2 0%, #fef2f2 100%);
+  border: 2px solid #fecaca;
+  border-left: 6px solid #dc2626;
+  box-shadow: 0 10px 24px rgba(220, 38, 38, 0.10);
+}
+
+.bloco-alerta h3 {
+  font-size: 1.25rem;
+  color: #991b1b;
+}
+
+#doc-alerta-clinico {
+  background: white;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  padding: 14px;
+  color: #7f1d1d;
+}
+
+.mensagem-comissao {
+  border: 1px solid #fecaca;
+  box-shadow: 0 6px 18px rgba(127, 29, 29, 0.05);
+}
+
+/* ===================================================== */
+/* RESPONSIVO                                            */
+/* ===================================================== */
+
+@media (max-width: 480px) {
+  .card-risco,
+  .protocolo-cabecalho {
+    align-items: flex-start;
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .risco-icone,
+  .protocolo-emoji {
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
+  }
+
+  #doc-classificacao-protocolo,
+  .protocolo-cabecalho strong {
+    font-size: 1rem;
+  }
+
+  #doc-pontuacao-protocolo,
+  .protocolo-cabecalho p {
+    font-size: 0.9rem;
+  }
+
+  .protocolo-grupo {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .protocolo-grupo h4 {
+    font-size: 0.98rem;
+  }
+
+  .protocolo-grupo li {
+    padding: 9px 10px 9px 34px;
+    font-size: 0.9rem;
+  }
+
+  .protocolo-grupo li::before {
+    left: 10px;
+  }
+}
+
+/* Impressão mais limpa */
+@media print {
+  .protocolo-grupo,
+  .protocolo-cabecalho,
+  .card-risco,
+  .bloco-alerta {
+    box-shadow: none;
+  }
+
+  .protocolo-grupo li {
+    background: white;
+  }
+}
+
+/* ===================================================== */
+/* UPGRADE VISUAL DO PROTOCOLO CLÍNICO - FALA DODÓI      */
+/* Cole este bloco NO FINAL do style.css da página final  */
+/* ===================================================== */
+
+.bloco-classificacao > .linha-info {
+  display: none;
+}
+
+.bloco-classificacao {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef6ff 100%);
+  border-left-color: #0ea5e9;
+}
+
+.card-risco {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  border-width: 2px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.card-risco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.45), transparent);
+  pointer-events: none;
+}
+
+.risco-icone {
+  width: 58px;
+  height: 58px;
+  font-size: 1.9rem;
+  background: rgba(255,255,255,0.75);
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,0.35);
+}
+
+#doc-classificacao-protocolo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+#doc-pontuacao-protocolo {
+  margin-top: 6px;
+  max-width: 780px;
+  color: #334155;
+  font-size: 0.98rem;
+}
+
+/* BLOCO PRINCIPAL DO PROTOCOLO */
+
+#doc-recomendacoes {
+  line-height: 1.6;
+}
+
+.protocolo-clinico {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.protocolo-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 2px solid #dbeafe;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.protocolo-emoji {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: rgba(255,255,255,0.75);
+}
+
+.protocolo-cabecalho strong {
+  display: block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.protocolo-cabecalho p {
+  color: #334155;
+  font-weight: 600;
+}
+
+.protocolo-grupo {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.protocolo-grupo h4 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.03rem;
+  color: #0f766e;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interpretacao-clinica h4::before {
+  content: "🧠";
+}
+
+.medida-indicada h4::before {
+  content: "🩺";
+}
+
+.execucao-clinica h4::before {
+  content: "📋";
+}
+
+.cuidados-tea h4::before {
+  content: "♾️";
+}
+
+.plano-reavaliacao h4::before {
+  content: "⏱️";
+}
+
+.conduta-final h4::before {
+  content: "🚨";
+}
+
+.protocolo-grupo p {
+  color: #334155;
+  line-height: 1.75;
+}
+
+.protocolo-grupo ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.protocolo-grupo li {
+  position: relative;
+  padding: 10px 12px 10px 38px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  color: #334155;
+  line-height: 1.55;
+}
+
+.protocolo-grupo li::before {
+  content: "✓";
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ccfbf1;
+  color: #0f766e;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+/* TEMPO DE REAVALIAÇÃO */
+
+.plano-reavaliacao {
+  border-color: #bae6fd;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ecfeff 100%);
+}
+
+.reavaliacao-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 12px 0 14px;
+}
+
+.reavaliacao-item {
+  background: white;
+  border: 1px solid #bae6fd;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.reavaliacao-item span {
+  display: block;
+  color: #64748b;
+  font-size: 0.82rem;
+  margin-bottom: 5px;
+}
+
+.reavaliacao-item strong {
+  display: block;
+  color: #0f172a;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.reavaliacao-resumo {
+  background: rgba(255, 255, 255, 0.75);
+  border-left: 4px solid #0ea5e9;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.conduta-final {
+  border-color: #bae6fd;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ecfeff 100%);
+}
+
+.conduta-final p {
+  font-weight: 600;
+}
+
+/* CORES POR CLASSIFICAÇÃO */
+
+.protocolo-cabecalho.risco-verde,
+.card-risco.risco-verde {
+  background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+  border-color: #86efac;
+}
+
+.protocolo-cabecalho.risco-amarelo,
+.card-risco.risco-amarelo {
+  background: linear-gradient(135deg, #fef9c3 0%, #fffbeb 100%);
+  border-color: #fde047;
+}
+
+.protocolo-cabecalho.risco-laranja,
+.card-risco.risco-laranja {
+  background: linear-gradient(135deg, #fed7aa 0%, #fff7ed 100%);
+  border-color: #fb923c;
+}
+
+.protocolo-cabecalho.risco-vermelho,
+.card-risco.risco-vermelho {
+  background: linear-gradient(135deg, #fecaca 0%, #fff1f2 100%);
+  border-color: #f87171;
+}
+
+.protocolo-cabecalho.risco-neutro,
+.card-risco.risco-neutro {
+  background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+  border-color: #cbd5e1;
+}
+
+/* ALERTA */
+
+.bloco-alerta {
+  background: linear-gradient(135deg, #fff1f2 0%, #fef2f2 100%);
+  border: 2px solid #fecaca;
+  border-left: 6px solid #dc2626;
+  box-shadow: 0 10px 24px rgba(220, 38, 38, 0.10);
+}
+
+.bloco-alerta h3 {
+  font-size: 1.25rem;
+  color: #991b1b;
+}
+
+#doc-alerta-clinico {
+  background: white;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  padding: 14px;
+  color: #7f1d1d;
+}
+
+.mensagem-comissao {
+  border: 1px solid #fecaca;
+  box-shadow: 0 6px 18px rgba(127, 29, 29, 0.05);
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 680px) {
+  .reavaliacao-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-risco,
+  .protocolo-cabecalho {
+    align-items: flex-start;
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .risco-icone,
+  .protocolo-emoji {
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
+  }
+
+  #doc-classificacao-protocolo,
+  .protocolo-cabecalho strong {
+    font-size: 1rem;
+  }
+
+  #doc-pontuacao-protocolo,
+  .protocolo-cabecalho p {
+    font-size: 0.9rem;
+  }
+
+  .protocolo-grupo {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .protocolo-grupo h4 {
+    font-size: 0.98rem;
+  }
+
+  .protocolo-grupo li {
+    padding: 9px 10px 9px 34px;
+    font-size: 0.9rem;
+  }
+
+  .protocolo-grupo li::before {
+    left: 10px;
+  }
+}
+
+@media print {
+  .protocolo-grupo,
+  .protocolo-cabecalho,
+  .card-risco,
+  .bloco-alerta {
+    box-shadow: none;
+  }
+
+  .protocolo-grupo li,
+  .reavaliacao-item {
+    background: white;
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documento Final da Triagem</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="pagina-documento">
+    <header class="topo-documento">
+      <button class="btn-topo" id="btn-voltar" type="button">← Voltar</button>
+
+      <div class="titulo-area">
+        <h1>Documento final da triagem</h1>
+        <p>Resumo clínico estruturado para impressão e registro</p>
+      </div>
+
+      <div class="grupo-topo">
+        <button class="btn-topo" id="btn-imprimir" type="button">🖨️ Imprimir / PDF</button>
+        <button class="btn-topo" id="btn-nova-triagem" type="button">Nova triagem</button>
+      </div>
+    </header>
+
+    <section class="painel-documento">
+      <article class="documento-clinico" id="documento-clinico">
+        <div class="cabecalho-documento">
+          <h2>Pré-ficha clínica / Prontuário inicial</h2>
+          <p id="data-hora-geracao"></p>
+        </div>
+
+        <div class="selo-manual">
+          📘 Manual Clínico – Fala Dodói
+          <span>Sistema de apoio à avaliação e manejo não farmacológico da dor</span>
+        </div>
+
+        <section class="bloco-documento">
+          <h3>Identificação do paciente</h3>
+          <div class="linha-info"><strong>Nome:</strong> <span id="doc-nome">-</span></div>
+          <div class="linha-info"><strong>Idade:</strong> <span id="doc-idade">-</span></div>
+          <div class="linha-info"><strong>Prontuário:</strong> <span id="doc-prontuario">-</span></div>
+        </section>
+
+        <section class="bloco-documento">
+          <h3>Resumo estruturado</h3>
+          <div class="linha-info"><strong>Locais da dor:</strong> <span id="doc-locais">-</span></div>
+          <div class="linha-info"><strong>Intensidade:</strong> <span id="doc-intensidade">-</span></div>
+          <div class="linha-info"><strong>Desconfortos:</strong> <span id="doc-desconfortos">-</span></div>
+          <div class="linha-info"><strong>Início da dor:</strong> <span id="doc-inicio">-</span></div>
+          <div class="linha-info"><strong>Padrão:</strong> <span id="doc-duracao">-</span></div>
+          <div class="linha-info"><strong>Piora com:</strong> <span id="doc-piora">-</span></div>
+          <div class="linha-info"><strong>Melhora com:</strong> <span id="doc-melhora">-</span></div>
+          <div class="linha-info"><strong>Sinais associados:</strong> <span id="doc-sinais">-</span></div>
+          <div class="linha-info"><strong>Observações da anamnese:</strong> <span id="doc-observacoes">-</span></div>
+          <div class="linha-info"><strong>Protocolo TEA:</strong> <span id="doc-tea">-</span></div>
+          <div class="linha-info"><strong>Observações TEA:</strong> <span id="doc-tea-obs">-</span></div>
+        </section>
+
+        <section class="bloco-documento bloco-classificacao">
+          <h3>Classificação do protocolo</h3>
+
+          <div class="card-risco" id="card-risco">
+            <div class="risco-icone" id="risco-icone">🟢</div>
+
+            <div>
+              <strong id="doc-classificacao-protocolo">Não classificado</strong>
+              <p id="doc-pontuacao-protocolo">Pontuação não calculada.</p>
+            </div>
+          </div>
+
+          <div class="linha-info">
+            <strong>Sintomas pontuados:</strong>
+            <span id="doc-sintomas-pontuados">-</span>
+          </div>
+        </section>
+
+        <section class="bloco-documento destaque">
+          <h3>Descrição clínica automática</h3>
+          <p id="texto-clinico-final">Documento não gerado.</p>
+        </section>
+
+        <section class="bloco-documento destaque">
+          <h3>Medidas não farmacológicas sugeridas</h3>
+          <p id="doc-recomendacoes">Nenhuma recomendação gerada.</p>
+        </section>
+
+        <section class="bloco-documento bloco-alerta oculto" id="bloco-alerta-clinico">
+          <h3>🚨 Alerta clínico ativado</h3>
+          <p id="doc-alerta-clinico">-</p>
+
+          <div class="mensagem-comissao">
+            <strong>Encaminhamento para Comissão de Dor:</strong>
+            <p id="doc-mensagem-comissao">-</p>
+          </div>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

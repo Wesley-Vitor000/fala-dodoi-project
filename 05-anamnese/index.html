@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha de Anamnese</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="pagina-anamnese">
+    <header class="topo-anamnese">
+      <button class="btn-topo" id="btn-voltar" type="button">
+        ← Voltar
+      </button>
+
+      <div class="titulo-area">
+        <h1>Ficha de anamnese</h1>
+        <p>Preencha as informações complementares para a triagem</p>
+      </div>
+
+      <button class="btn-topo" id="btn-proximo" type="button">
+        Próximo →
+      </button>
+    </header>
+
+    <section class="painel-anamnese">
+      <div class="info-paciente" id="info-paciente"></div>
+
+      <form id="form-anamnese" class="form-anamnese">
+        <div class="grupo-campo">
+          <label for="inicioDor">Quando a dor começou?</label>
+          <select id="inicioDor">
+            <option value="">Selecione</option>
+            <option value="Hoje">Hoje</option>
+            <option value="Ontem">Ontem</option>
+            <option value="Há alguns dias">Há alguns dias</option>
+            <option value="Há mais de uma semana">Há mais de uma semana</option>
+            <option value="Não soube informar">Não soube informar</option>
+          </select>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="duracaoDor">A dor é:</label>
+          <select id="duracaoDor">
+            <option value="">Selecione</option>
+            <option value="Contínua">Contínua</option>
+            <option value="Intermitente">Intermitente</option>
+            <option value="Vai e volta">Vai e volta</option>
+            <option value="Não soube informar">Não soube informar</option>
+          </select>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="pioraDor">A dor piora com:</label>
+          <input type="text" id="pioraDor" placeholder="Ex.: movimento, toque, alimentação...">
+        </div>
+
+        <div class="grupo-campo">
+          <label for="melhoraDor">A dor melhora com:</label>
+          <input type="text" id="melhoraDor" placeholder="Ex.: repouso, medicação, compressa...">
+        </div>
+
+        <div class="grupo-campo">
+          <label for="sinaisAssociados">Sinais associados</label>
+          <textarea id="sinaisAssociados" rows="4" placeholder="Ex.: febre, edema, vermelhidão, irritabilidade, choro..."></textarea>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="observacoes">Observações gerais</label>
+          <textarea id="observacoes" rows="5" placeholder="Digite aqui observações relevantes da avaliação..."></textarea>
+        </div>
+
+        <div class="grupo-check">
+          <label class="check-linha">
+            <input type="checkbox" id="dificuldadeComunicacao">
+            <span>Paciente apresenta dificuldade de comunicação verbal</span>
+          </label>
+        </div>
+      </form>
+
+      <div class="resumo-selecao">
+        <h2>Resumo da anamnese</h2>
+        <p id="texto-anamnese">Nenhuma informação adicional preenchida ainda.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

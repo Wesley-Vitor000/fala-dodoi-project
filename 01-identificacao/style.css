@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e8f5f0 0%, #f0f9ff 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.pagina {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-identificacao {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #dbeafe;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(13, 148, 136, 0.12);
+  padding: 28px 22px;
+}
+
+.topo {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.topo h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  color: #0d9488;
+  margin-bottom: 10px;
+}
+
+.topo h1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.topo h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+
+  animation: brilho 2.5s infinite;
+}
+
+@keyframes brilho {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+.topo p:first-of-type {
+  margin-top: 6px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  color: #0f766e;
+  font-weight: 500;
+}
+
+.subtitulo {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.grupo-campo label {
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.grupo-campo input,
+.grupo-campo select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+}
+
+.acoes {
+  margin-top: 10px;
+}
+
+.btn-principal {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+  color: #ffffff;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-principal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.22);
+}
+
+.btn-principal:active {
+  transform: scale(0.98);
+}
+
+.mensagem {
+  margin-top: 18px;
+  min-height: 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #0369a1;
+}
+
+
+/* CONFIGURAÇÃO Tablets */
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .pagina {
+    min-height: calc(100vh - 32px);
+  }
+
+  .card-identificacao {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .topo {
+    margin-bottom: 24px;
+  }
+
+  .topo h1 {
+    font-size: 1.7rem;
+  }
+
+  .topo p:first-of-type {
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+
+  .subtitulo {
+    font-size: 0.95rem;
+  }
+
+  .grupo-campo input,
+  .grupo-campo select {
+    padding: 13px 14px;
+    font-size: 0.98rem;
+  }
+
+  .btn-principal {
+    padding: 15px 18px;
+    font-size: 1rem;
+  }
+}
+
+/* CONFIGURAÇÃO DE CELULAR */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .pagina {
+    min-height: calc(100vh - 20px);
+    align-items: flex-start;
+  }
+
+  .card-identificacao {
+    padding: 20px 14px;
+    border-radius: 16px;
+    margin-top: 10px;
+  }
+
+  .topo {
+    margin-bottom: 20px;
+  }
+
+  .topo h1 {
+    font-size: 1.45rem;
+    line-height: 1.15;
+  }
+
+  .topo p:first-of-type {
+    font-size: 0.84rem;
+    margin-bottom: 12px;
+    line-height: 1.35;
+    padding: 0 4px;
+  }
+
+  .subtitulo {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 4px;
+  }
+
+  .formulario {
+    gap: 14px;
+  }
+
+  .grupo-campo label {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .grupo-campo input,
+  .grupo-campo select {
+    padding: 12px 12px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+
+  .btn-principal {
+    padding: 14px 16px;
+    font-size: 0.98rem;
+    border-radius: 12px;
+  }
+
+  .mensagem {
+    font-size: 0.9rem;
+  }
+}

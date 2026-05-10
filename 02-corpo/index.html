@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local da Dor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="pagina-corpo">
+    <header class="topo-corpo">
+      <button class="btn-topo btn-voltar" id="btn-voltar" type="button">
+        ← Voltar
+      </button>
+
+      <div class="titulo-area">
+        <h1 id="titulo-vista">Onde está doendo? (Frente)</h1>
+        <p id="subtitulo-vista">Toque nas partes do corpo onde o paciente sente dor</p>
+      </div>
+
+      <div class="grupo-topo">
+        <button class="btn-topo" id="btn-limpar" type="button">
+          Limpar
+        </button>
+
+        <button class="btn-topo" id="btn-virar" type="button">
+          Ver costas
+        </button>
+
+        <button class="btn-topo btn-proximo" id="btn-proximo" type="button">
+          Próximo →
+        </button>
+      </div>
+    </header>
+
+    <section class="painel-corpo">
+      <div class="info-paciente" id="info-paciente"></div>
+
+      <div class="corpo-wrapper">
+        <!-- FRENTE -->
+        <div class="vista-corpo frente ativa" id="vista-frente">
+          <svg viewBox="0 0 300 700" class="corpo-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pele" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5d5bd"/>
+                <stop offset="50%" stop-color="#f4c4a0"/>
+                <stop offset="100%" stop-color="#e8b896"/>
+              </linearGradient>
+              <linearGradient id="sombraCabeca" x1="30%" y1="0%" x2="70%" y2="100%">
+                <stop offset="0%" stop-color="#f5d5bd"/>
+                <stop offset="100%" stop-color="#e8b896"/>
+              </linearGradient>
+            </defs>
+
+            <g class="parte-corpo" data-local="Região cefálica">
+              <ellipse cx="150" cy="65" rx="42" ry="50" fill="url(#sombraCabeca)" stroke="#d4a574" stroke-width="2.5"/>
+              <ellipse cx="115" cy="68" rx="8" ry="14" fill="#f0c0a0" stroke="#d4a574" stroke-width="1"/>
+              <ellipse cx="185" cy="68" rx="8" ry="14" fill="#f0c0a0" stroke="#d4a574" stroke-width="1"/>
+              <circle cx="135" cy="60" r="3" fill="#4a4a4a"/>
+              <circle cx="165" cy="60" r="3" fill="#4a4a4a"/>
+              <line x1="150" y1="65" x2="150" y2="75" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M 140 85 Q 150 87 160 85" stroke="#d4a574" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </g>
+
+            <path class="parte-corpo" data-local="Região cervical"
+              d="M 130 110 L 130 130 Q 135 135 150 135 Q 165 135 170 130 L 170 110 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <ellipse class="parte-corpo" data-local="Região acromial direita"
+              cx="105" cy="155" rx="22" ry="18" fill="url(#pele)"
+              stroke="#d4a574" stroke-width="2"/>
+
+            <ellipse class="parte-corpo" data-local="Região acromial esquerda"
+              cx="195" cy="155" rx="22" ry="18" fill="url(#pele)"
+              stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região torácica">
+              <path
+                d="M 125 145 Q 115 160 115 180 L 115 210 Q 115 225 125 230 L 175 230 Q 185 225 185 210 L 185 180 Q 185 160 175 145 Z"
+                fill="url(#pele)" stroke="#d4a574" stroke-width="2.5"/>
+              <line x1="150" y1="150" x2="150" y2="225" stroke="#e8b896" stroke-width="1.5" opacity="0.5"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região abdominal">
+              <path
+                d="M 125 230 Q 120 250 120 275 Q 120 295 125 305 L 175 305 Q 180 295 180 275 Q 180 250 175 230 Z"
+                fill="url(#pele)" stroke="#d4a574" stroke-width="2.5"/>
+              <ellipse cx="150" cy="265" rx="4" ry="3" fill="#d4a574" opacity="0.6"/>
+            </g>
+
+            <path class="parte-corpo" data-local="Região braquial anterior direita"
+              d="M 85 165 Q 75 180 73 200 L 73 225 Q 75 235 80 238 L 92 238 Q 97 235 98 225 L 98 200 Q 96 180 90 165 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região braquial anterior esquerda"
+              d="M 210 165 Q 204 180 202 200 L 202 225 Q 203 235 208 238 L 220 238 Q 225 235 227 225 L 227 200 Q 225 180 215 165 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <ellipse class="parte-corpo" data-local="Região cubital direita"
+              cx="85" cy="248" rx="14" ry="13" fill="url(#pele)"
+              stroke="#d4a574" stroke-width="2"/>
+
+            <ellipse class="parte-corpo" data-local="Região cubital esquerda"
+              cx="215" cy="248" rx="14" ry="13" fill="url(#pele)"
+              stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região antebraquial direita"
+              d="M 78 260 Q 70 280 68 305 L 68 325 Q 70 335 75 338 L 87 338 Q 92 335 93 325 L 93 305 Q 91 280 88 260 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região antebraquial esquerda"
+              d="M 207 260 Q 209 280 207 305 L 207 325 Q 208 335 213 338 L 225 338 Q 230 335 232 325 L 232 305 Q 230 280 222 260 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região manual direita">
+              <ellipse cx="80" cy="353" rx="20" ry="22" fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+              <rect x="72" y="370" width="3" height="10" rx="1.5" fill="#f0c0a0"/>
+              <rect x="77" y="372" width="3" height="12" rx="1.5" fill="#f0c0a0"/>
+              <rect x="82" y="370" width="3" height="10" rx="1.5" fill="#f0c0a0"/>
+              <rect x="87" y="368" width="3" height="8" rx="1.5" fill="#f0c0a0"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região manual esquerda">
+              <ellipse cx="220" cy="353" rx="20" ry="22" fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+              <rect x="210" y="370" width="3" height="10" rx="1.5" fill="#f0c0a0"/>
+              <rect x="215" y="372" width="3" height="12" rx="1.5" fill="#f0c0a0"/>
+              <rect x="220" y="370" width="3" height="10" rx="1.5" fill="#f0c0a0"/>
+              <rect x="225" y="368" width="3" height="8" rx="1.5" fill="#f0c0a0"/>
+            </g>
+
+            <path class="parte-corpo" data-local="Região femoral direita"
+              d="M 125 310 Q 120 340 118 380 L 118 420 Q 120 435 125 438 L 145 438 Q 148 435 148 420 L 148 380 Q 146 340 142 310 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região femoral esquerda"
+              d="M 158 310 Q 154 340 152 380 L 152 420 Q 152 435 155 438 L 175 438 Q 180 435 182 420 L 182 380 Q 180 340 175 310 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região patelar direita">
+              <ellipse
+                cx="133" cy="450" rx="15" ry="16" fill="url(#pele)"
+                stroke="#d4a574" stroke-width="2"/>
+              <circle cx="133" cy="450" r="6" fill="#e8b896" opacity="0.4"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região patelar esquerda">
+              <ellipse
+                cx="167" cy="450" rx="15" ry="16" fill="url(#pele)"
+                stroke="#d4a574" stroke-width="2"/>
+              <circle cx="167" cy="450" r="6" fill="#e8b896" opacity="0.4"/>
+            </g>
+
+            <path class="parte-corpo" data-local="Região crural direita"
+              d="M 122 465 Q 118 500 118 550 L 118 590 Q 120 602 125 605 L 141 605 Q 145 602 146 590 L 146 550 Q 144 500 140 465 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região crural esquerda"
+              d="M 154 465 Q 152 500 152 550 L 152 590 Q 154 602 159 605 L 175 605 Q 180 602 182 590 L 182 550 Q 180 500 176 465 Z"
+              fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região podálica direita">
+              <ellipse cx="130" cy="625" rx="26" ry="18" fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+              <path d="M 110 620 Q 115 615 125 615 Q 135 615 145 617" stroke="#d4a574" stroke-width="1.5" fill="none"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região podálica esquerda">
+              <ellipse cx="170" cy="625" rx="26" ry="18" fill="url(#pele)" stroke="#d4a574" stroke-width="2"/>
+              <path d="M 155 617 Q 165 615 175 615 Q 185 615 190 620" stroke="#d4a574" stroke-width="1.5" fill="none"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- COSTAS -->
+        <div class="vista-corpo costas" id="vista-costas">
+          <svg viewBox="0 0 300 700" class="corpo-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pele-costas" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5d5bd"/>
+                <stop offset="50%" stop-color="#f4c4a0"/>
+                <stop offset="100%" stop-color="#e8b896"/>
+              </linearGradient>
+            </defs>
+
+            <g class="parte-corpo" data-local="Região cefálica posterior">
+              <ellipse cx="150" cy="65" rx="42" ry="50" fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2.5"/>
+              <path d="M 110 50 Q 105 65 108 80 Q 112 70 120 60 Q 130 45 150 40 Q 170 45 180 60 Q 188 70 192 80 Q 195 65 190 50 Q 180 35 150 30 Q 120 35 110 50"
+                fill="#daa87e" opacity="0.3"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região cervical posterior">
+              <path
+                d="M 130 110 L 130 130 Q 135 135 150 135 Q 165 135 170 130 L 170 110 Z"
+                fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+              <line x1="150" y1="115" x2="150" y2="130" stroke="#d4a574" stroke-width="1.5" opacity="0.4"/>
+            </g>
+
+            <ellipse class="parte-corpo" data-local="Região acromial esquerda"
+              cx="105" cy="155" rx="22" ry="18" fill="url(#pele-costas)"
+              stroke="#d4a574" stroke-width="2"/>
+
+            <ellipse class="parte-corpo" data-local="Região acromial direita"
+              cx="195" cy="155" rx="22" ry="18" fill="url(#pele-costas)"
+              stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região dorsal superior">
+              <path
+                d="M 125 145 Q 115 160 115 180 L 115 210 Q 115 225 125 230 L 175 230 Q 185 225 185 210 L 185 180 Q 185 160 175 145 Z"
+                fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2.5"/>
+              <line x1="150" y1="145" x2="150" y2="300" stroke="#d4a574" stroke-width="2" opacity="0.4"/>
+              <circle cx="150" cy="160" r="3" fill="#d4a574" opacity="0.5"/>
+              <circle cx="150" cy="180" r="3" fill="#d4a574" opacity="0.5"/>
+              <circle cx="150" cy="200" r="3" fill="#d4a574" opacity="0.5"/>
+              <circle cx="150" cy="220" r="3" fill="#d4a574" opacity="0.5"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região lombar">
+              <path
+                d="M 125 230 Q 120 250 120 275 Q 120 295 125 305 L 175 305 Q 180 295 180 275 Q 180 250 175 230 Z"
+                fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2.5"/>
+              <circle cx="150" cy="245" r="3" fill="#d4a574" opacity="0.5"/>
+              <circle cx="150" cy="265" r="3" fill="#d4a574" opacity="0.5"/>
+              <circle cx="150" cy="285" r="3" fill="#d4a574" opacity="0.5"/>
+            </g>
+
+            <path class="parte-corpo" data-local="Região braquial posterior esquerda"
+              d="M 85 165 Q 75 180 73 200 L 73 225 Q 75 235 80 238 L 92 238 Q 97 235 98 225 L 98 200 Q 96 180 90 165 Z"
+              fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região braquial posterior direita"
+              d="M 210 165 Q 204 180 202 200 L 202 225 Q 203 235 208 238 L 220 238 Q 225 235 227 225 L 227 200 Q 225 180 215 165 Z"
+              fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região cubital esquerda">
+              <ellipse
+                cx="85" cy="248" rx="14" ry="13" fill="url(#pele-costas)"
+                stroke="#d4a574" stroke-width="2"/>
+              <circle cx="85" cy="248" r="5" fill="#d4a574" opacity="0.4"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região cubital direita">
+              <ellipse
+                cx="215" cy="248" rx="14" ry="13" fill="url(#pele-costas)"
+                stroke="#d4a574" stroke-width="2"/>
+              <circle cx="215" cy="248" r="5" fill="#d4a574" opacity="0.4"/>
+            </g>
+
+            <path class="parte-corpo" data-local="Região antebraquial esquerda"
+              d="M 78 260 Q 70 280 68 305 L 68 325 Q 70 335 75 338 L 87 338 Q 92 335 93 325 L 93 305 Q 91 280 88 260 Z"
+              fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região antebraquial direita"
+              d="M 207 260 Q 209 280 207 305 L 207 325 Q 208 335 213 338 L 225 338 Q 230 335 232 325 L 232 305 Q 230 280 222 260 Z"
+              fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região manual esquerda">
+              <ellipse cx="80" cy="353" rx="20" ry="22" fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+              <path d="M 72 345 Q 75 340 80 340 Q 85 340 88 345" stroke="#d4a574" stroke-width="1.5" fill="none" opacity="0.5"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região manual direita">
+              <ellipse cx="220" cy="353" rx="20" ry="22" fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+              <path d="M 212 345 Q 215 340 220 340 Q 225 340 228 345" stroke="#d4a574" stroke-width="1.5" fill="none" opacity="0.5"/>
+            </g>
+
+            <path class="parte-corpo" data-local="Região femoral esquerda"
+              d="M 125 310 Q 120 340 118 380 L 118 420 Q 120 435 125 438 L 145 438 Q 148 435 148 420 L 148 380 Q 146 340 142 310 Z"
+              fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+
+            <path class="parte-corpo" data-local="Região femoral direita"
+              d="M 158 310 Q 154 340 152 380 L 152 420 Q 152 435 155 438 L 175 438 Q 180 435 182 420 L 182 380 Q 180 340 175 310 Z"
+              fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+
+            <g class="parte-corpo" data-local="Região patelar esquerda">
+              <ellipse
+                cx="133" cy="450" rx="15" ry="16" fill="url(#pele-costas)"
+                stroke="#d4a574" stroke-width="2"/>
+              <path d="M 125 445 Q 130 442 135 445" stroke="#d4a574" stroke-width="1.5" fill="none" opacity="0.5"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região patelar direita">
+              <ellipse
+                cx="167" cy="450" rx="15" ry="16" fill="url(#pele-costas)"
+                stroke="#d4a574" stroke-width="2"/>
+              <path d="M 160 445 Q 165 442 170 445" stroke="#d4a574" stroke-width="1.5" fill="none" opacity="0.5"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região sural esquerda">
+              <path
+                d="M 122 465 Q 118 490 120 520 Q 122 545 120 570 L 120 590 Q 122 602 127 605 L 139 605 Q 143 602 144 590 L 144 570 Q 142 545 144 520 Q 146 490 142 465 Z"
+                fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+              <ellipse cx="133" cy="520" rx="8" ry="25" fill="#e8b896" opacity="0.3"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região sural direita">
+              <path
+                d="M 154 465 Q 152 490 154 520 Q 156 545 154 570 L 154 590 Q 156 602 161 605 L 173 605 Q 178 602 180 590 L 180 570 Q 178 545 180 520 Q 182 490 178 465 Z"
+                fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+              <ellipse cx="167" cy="520" rx="8" ry="25" fill="#e8b896" opacity="0.3"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região podálica esquerda">
+              <ellipse cx="130" cy="625" rx="26" ry="18" fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+              <path d="M 115 625 Q 125 622 135 625" stroke="#d4a574" stroke-width="1.5" fill="none" opacity="0.5"/>
+            </g>
+
+            <g class="parte-corpo" data-local="Região podálica direita">
+              <ellipse cx="170" cy="625" rx="26" ry="18" fill="url(#pele-costas)" stroke="#d4a574" stroke-width="2"/>
+              <path d="M 165 625 Q 175 622 185 625" stroke="#d4a574" stroke-width="1.5" fill="none" opacity="0.5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="resumo-selecao">
+        <h2>Locais selecionados</h2>
+        <p id="texto-locais">Nenhuma região selecionada.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

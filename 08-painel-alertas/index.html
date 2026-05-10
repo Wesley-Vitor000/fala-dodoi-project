@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Fala Dodói - Painel de Alertas</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <main class="painel">
+        <section class="topo">
+            <div>
+                <p class="subtitulo">Sistema hospitalar</p>
+                <h1>Painel de Alertas</h1>
+                <p class="descricao">
+                    Acompanhe em tempo real os pacientes que precisam de atenção.
+                </p>
+            </div>
+
+            <div class="status-sistema">
+                <span></span>
+                Online
+            </div>
+        </section>
+
+        <section class="resumo">
+            <div class="card-resumo emergencia">
+                <p>Emergências</p>
+                <strong id="total-emergencias">0</strong>
+            </div>
+
+            <div class="card-resumo atencao">
+                <p>Em atenção</p>
+                <strong id="total-atencao">0</strong>
+            </div>
+
+            <div class="card-resumo estavel">
+                <p>Estáveis</p>
+                <strong id="total-estaveis">0</strong>
+            </div>
+        </section>
+
+        <section class="lista-alertas">
+            <h2>Alertas recentes</h2>
+        </section>
+    </main>
+
+    <div class="modal oculto" id="modal-detalhes">
+        <div class="modal-conteudo">
+            <button class="fechar-modal" id="fechar-modal">X</button>
+
+            <h2 id="modal-nome"></h2>
+            <p id="modal-mensagem"></p>
+
+            <div class="modal-info">
+                <p><strong>Idade:</strong> <span id="modal-idade"></span></p>
+                <p><strong>Prontuário:</strong> <span id="modal-prontuario"></span></p>
+                <p><strong>Intensidade:</strong> <span id="modal-intensidade"></span></p>
+                <p><strong>Classificação:</strong> <span id="modal-classificacao"></span></p>
+                <p><strong>Sintomas:</strong> <span id="modal-sintomas"></span></p>
+                <p><strong>Data/Hora:</strong> <span id="modal-data"></span></p>
+            </div>
+
+            <button class="btn-atendido" id="btn-atendido">Marcar como atendido</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

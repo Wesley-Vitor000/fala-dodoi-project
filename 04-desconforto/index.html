@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tipo de Desconforto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="pagina-desconforto">
+    <header class="topo-desconforto">
+      <button class="btn-topo" id="btn-voltar" type="button">
+        ← Voltar
+      </button>
+
+      <div class="titulo-area">
+        <h1>Como é esse desconforto?</h1>
+        <p>Selecione uma ou mais opções que representem o que o paciente está sentindo</p>
+      </div>
+
+      <button class="btn-topo" id="btn-proximo" type="button">
+        Próximo →
+      </button>
+    </header>
+
+    <section class="painel-desconforto">
+      <div class="info-paciente" id="info-paciente"></div>
+
+      <div class="grade-desconforto">
+
+        <!-- Ardência -->
+        <button class="card-desconforto" data-valor="Ardência" type="button">
+          <div class="area-imagem">
+            <img src="img/Ardencia.png" alt="Ardência" class="imagem-desconforto">
+          </div>
+          <div class="area-texto">
+            <span class="titulo-card">Ardência</span>
+          </div>
+        </button>
+
+        <!-- Pontada -->
+        <button class="card-desconforto" data-valor="Pontada" type="button">
+          <div class="area-imagem">
+            <img src="img/Pontada.png" alt="Pontada" class="imagem-desconforto">
+          </div>
+          <div class="area-texto">
+            <span class="titulo-card">Pontada</span>
+          </div>
+        </button>
+
+        <!-- Pressão -->
+        <button class="card-desconforto" data-valor="Pressão" type="button">
+          <div class="area-imagem">
+            <img src="img/Pressao-desconforto.png" alt="Pressão" class="imagem-desconforto">
+          </div>
+          <div class="area-texto">
+            <span class="titulo-card">Pressão</span>
+          </div>
+        </button>
+
+        <!-- Formigamento -->
+        <button class="card-desconforto" data-valor="Formigamento" type="button">
+          <div class="area-imagem">
+            <img src="img/Formigamento.png" alt="Formigamento" class="imagem-desconforto">
+          </div>
+          <div class="area-texto">
+            <span class="titulo-card">Formigamento</span>
+          </div>
+        </button>
+
+        <!-- Enjoo -->
+        <button class="card-desconforto" data-valor="Enjoo" type="button">
+          <div class="area-imagem">
+            <img src="img/Enjôo.png" alt="Enjoo" class="imagem-desconforto">
+          </div>
+          <div class="area-texto">
+            <span class="titulo-card">Enjoo</span>
+          </div>
+        </button>
+
+        <!-- Falta de ar -->
+        <button class="card-desconforto" data-valor="Falta de ar" type="button">
+          <div class="area-imagem">
+            <img src="img/Falta-de-ar.png" alt="Falta de ar" class="imagem-desconforto">
+          </div>
+          <div class="area-texto">
+            <span class="titulo-card">Falta de ar</span>
+          </div>
+        </button>
+
+      </div>
+
+      <div class="resumo-selecao">
+        <h2>Desconfortos selecionados</h2>
+        <p id="texto-desconforto">Nenhum desconforto selecionado.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
