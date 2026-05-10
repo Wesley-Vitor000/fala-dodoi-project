@@ -955,10 +955,3 @@ async function enviarAlertaComissaoDor(dados, analiseProtocolo) {
   sessionStorage.setItem("alertaComissaoDorEnviado", "sim");
 }
 
-const btnAbrirComissao = document.getElementById("btn-abrir-comissao");
-
-if (btnAbrirComissao) {
-  btnAbrirComissao.addEventListener("click", () => {
-    window.open("../09-alerta-comissao-dor/index.html", "_blank");
-  });
-}
