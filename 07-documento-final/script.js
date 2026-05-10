@@ -827,7 +827,7 @@ const btnAbrirPainel = document.getElementById("btn-abrir-painel");
 if (btnSalvarAlerta) {
   btnSalvarAlerta.addEventListener("click", async () => {
     try {
-      await salvarAlertaNoPainel(dados, analiseProtocolo);
+      await salvarAlertaNoPainel(dadosGlobais, analiseGlobal);
       alert("Dados enviados para o painel com sucesso!");
     } catch (erro) {
       console.error("Erro ao enviar alerta:", erro);
