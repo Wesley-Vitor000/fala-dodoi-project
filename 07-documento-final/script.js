@@ -813,6 +813,27 @@ if (btnNovaTriagem) {
 }
 
 
+function definirStatusPainel(analiseProtocolo) {
+  const status = analiseProtocolo.classificacao.status;
+  const nivel = analiseProtocolo.classificacao.nivel;
+
+  if (status === "Crítico" || nivel === "Respiratório/Cardíaco") {
+    return "emergencia";
+  }
+
+  if (
+    status === "Atenção" ||
+    status === "Reavaliação necessária" ||
+    nivel === "Moderado" ||
+    nivel === "Inflamatório" ||
+    nivel === "Emocional"
+  ) {
+    return "atencao";
+  }
+
+  return "estavel";
+}
+
 async function salvarAlertaNoPainel(dados, analiseProtocolo) {
 
   if (!dados || !analiseProtocolo) {
@@ -830,7 +851,7 @@ async function salvarAlertaNoPainel(dados, analiseProtocolo) {
     classificacao: analiseProtocolo.classificacao.nivel,
     mensagem: analiseProtocolo.alertaTexto || "Triagem finalizada",
     dataHora: new Date().toLocaleString("pt-BR"),
-    status: "emergencia"
+    status: definirStatusPainel(analiseProtocolo)
   };
 
   const resposta = await fetch(API_ALERTA_GERAL, {

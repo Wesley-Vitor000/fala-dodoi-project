@@ -128,5 +128,23 @@ def finalizar_alerta_comissao(id_alerta):
     return {"message": "Atendimento finalizado e removido da fila"}
 
 
+# Aquela rota para finalizar um alerta do painel geral, caso queira manter o histórico dos alertas finalizados, basta não remover o alerta do arquivo JSON, mas sim marcar ele como "finalizado": true ou algo do tipo. Assim, o histórico de alertas finalizados pode ser consultado posteriormente.
+@app.route("/alerta/<int:id_alerta>", methods=["DELETE"])
+def finalizar_alerta_geral(id_alerta):
+    garantir_arquivo_json(ARQUIVO_ALERTAS)
+
+    with open(ARQUIVO_ALERTAS, "r", encoding="utf-8") as arquivo:
+        alertas = json.load(arquivo)
+
+    alertas_atualizados = [
+        alerta for alerta in alertas
+        if int(alerta.get("id", 0)) != id_alerta
+    ]
+
+    with open(ARQUIVO_ALERTAS, "w", encoding="utf-8") as arquivo:
+        json.dump(alertas_atualizados, arquivo, indent=4, ensure_ascii=False)
+
+    return {"message": "Alerta removido com sucesso"}
+
 if __name__ == "__main__":
     app.run(debug=True)
