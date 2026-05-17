@@ -140,3 +140,18 @@ btnProximo.addEventListener('click', () => {
 
   window.location.href = '../03-intensidade/index.html';
 });
+
+const btnMenu = document.getElementById("btn-menu");
+const menuAcoes = document.getElementById("menu-acoes");
+
+if (btnMenu && menuAcoes) {
+  btnMenu.addEventListener("click", () => {
+    menuAcoes.classList.toggle("aberto");
+
+    if (menuAcoes.classList.contains("aberto")) {
+      btnMenu.textContent = "×";
+    } else {
+      btnMenu.textContent = "☰";
+    }
+  });
+}

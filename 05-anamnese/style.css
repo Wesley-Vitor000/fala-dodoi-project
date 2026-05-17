@@ -326,3 +326,70 @@ textarea {
     padding: 10px 12px;
   }
 }
+
+.barra-navegacao {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(240, 249, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #dbeafe;
+  animation: subirBarra 0.35s ease;
+}
+
+.btn-nav {
+  flex: 1;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  color: white;
+  transition: 0.22s ease;
+}
+
+.btn-voltar {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+.btn-proximo {
+  background: linear-gradient(135deg, #2dd4bf, #0d9488);
+}
+
+.btn-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.btn-nav:active {
+  transform: scale(0.96);
+}
+
+@keyframes subirBarra {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.painel-anamnese {
+  padding-bottom: 84px;
+}
+
+@media (max-width: 768px) {
+  .topo-anamnese {
+    justify-content: center;
+  }
+
+  .titulo-area {
+    text-align: center;
+  }
+}

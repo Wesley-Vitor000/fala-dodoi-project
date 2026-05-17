@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intensidade da Dor</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main class="pagina-intensidade">
     <header class="topo-intensidade">
-      <button class="btn-topo" id="btn-voltar" type="button">
-        ← Voltar
-      </button>
-
       <div class="titulo-area">
         <h1>Qual a intensidade da dor?</h1>
         <p>Escolha a figurinha que melhor representa o desconforto do paciente</p>
       </div>
 
-      <button class="btn-topo" id="btn-proximo" type="button">
-        Próximo →
+      <button class="btn-menu" id="btn-menu" type="button">
+        ☰
       </button>
+
+      <nav class="menu-acoes" id="menu-acoes">
+        <button class="btn-topo" id="btn-limpar-intensidade" type="button">
+          Limpar seleção
+        </button>
+      </nav>
     </header>
 
     <section class="painel-intensidade">
@@ -83,6 +87,18 @@
         <p id="texto-intensidade">Nenhuma intensidade selecionada.</p>
       </div>
     </section>
+
+    <div class="barra-navegacao">
+      <button class="btn-nav btn-voltar" id="btn-voltar" type="button">
+        ← Voltar
+      </button>
+
+      <button class="btn-nav btn-proximo" id="btn-proximo" type="button">
+        Próximo →
+      </button>
+    </div>
+
+
   </main>
 
   <footer class="footer-creditos">
@@ -93,4 +109,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

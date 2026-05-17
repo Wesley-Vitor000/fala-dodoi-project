@@ -87,3 +87,36 @@ btnVoltar.addEventListener('click', () => {
 btnProximo.addEventListener('click', () => {
   window.location.href = '../05-anamnese/index.html';
 });
+
+const btnMenu = document.getElementById("btn-menu");
+const menuAcoes = document.getElementById("menu-acoes");
+const btnLimparDesconforto = document.getElementById("btn-limpar-desconforto");
+
+if (btnMenu && menuAcoes) {
+  btnMenu.addEventListener("click", () => {
+    menuAcoes.classList.toggle("aberto");
+
+    btnMenu.textContent = menuAcoes.classList.contains("aberto")
+      ? "×"
+      : "☰";
+  });
+}
+
+if (btnLimparDesconforto) {
+  btnLimparDesconforto.addEventListener("click", () => {
+    desconfortosSelecionados = [];
+
+    localStorage.removeItem(chaveDesconforto);
+
+    cardsDesconforto.forEach((card) => {
+      card.classList.remove("ativa");
+    });
+
+    atualizarResumo();
+
+    if (menuAcoes) {
+      menuAcoes.classList.remove("aberto");
+      btnMenu.textContent = "☰";
+    }
+  });
+}

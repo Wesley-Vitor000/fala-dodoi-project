@@ -330,3 +330,188 @@ g.parte-corpo.selecionada * {
     width: min(100%, 220px);
   }
 }
+
+.btn-menu {
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.menu-acoes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.barra-navegacao {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(240, 249, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #dbeafe;
+}
+
+.btn-nav {
+  flex: 1;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-voltar {
+  background: #64748b;
+}
+
+.btn-proximo {
+  background: #0d9488;
+}
+
+@media (min-width: 769px) {
+  .btn-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .topo-corpo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .titulo-area {
+    text-align: left;
+  }
+
+  .menu-acoes {
+    position: absolute;
+    top: 72px;
+    right: 12px;
+    width: min(260px, calc(100vw - 24px));
+    display: none;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    z-index: 50;
+  }
+
+  .menu-acoes.aberto {
+    display: flex;
+  }
+
+  .menu-acoes .btn-topo {
+    width: 100%;
+    background: #0ea5e9;
+    color: white;
+  }
+
+  .painel-corpo {
+    padding-bottom: 84px;
+  }
+}
+
+/* BOTÕES MAIS AMIGÁVEIS + ANIMAÇÕES */
+
+.btn-menu,
+.btn-topo,
+.btn-nav {
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.btn-menu:hover,
+.btn-topo:hover,
+.btn-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.btn-menu:active,
+.btn-topo:active,
+.btn-nav:active {
+  transform: scale(0.96);
+}
+
+/* Botão do menu */
+.btn-menu {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+/* Botões dentro do menu */
+.menu-acoes .btn-topo {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  box-shadow: 0 8px 18px rgba(14, 165, 233, 0.25);
+}
+
+.menu-acoes .btn-topo:nth-child(1) {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+.menu-acoes .btn-topo:nth-child(2) {
+  background: linear-gradient(135deg, #22c55e, #14b8a6);
+}
+
+/* Botões de navegação de baixo */
+.btn-voltar {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+  box-shadow: 0 8px 18px rgba(100, 116, 139, 0.25);
+}
+
+.btn-proximo {
+  background: linear-gradient(135deg, #2dd4bf, #0d9488);
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.25);
+}
+
+/* Menu abrindo suave */
+.menu-acoes {
+  animation: abrirMenu 0.22s ease;
+}
+
+@keyframes abrirMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animação leve na barra inferior */
+.barra-navegacao {
+  animation: subirBarra 0.35s ease;
+}
+
+@keyframes subirBarra {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

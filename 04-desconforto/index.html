@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tipo de Desconforto</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main class="pagina-desconforto">
     <header class="topo-desconforto">
-      <button class="btn-topo" id="btn-voltar" type="button">
-        ← Voltar
-      </button>
-
       <div class="titulo-area">
         <h1>Como é esse desconforto?</h1>
         <p>Selecione uma ou mais opções que representem o que o paciente está sentindo</p>
       </div>
 
-      <button class="btn-topo" id="btn-proximo" type="button">
-        Próximo →
+      <button class="btn-menu" id="btn-menu" type="button">
+        ☰
       </button>
+
+      <nav class="menu-acoes" id="menu-acoes">
+        <button class="btn-topo" id="btn-limpar-desconforto" type="button">
+          Limpar seleção
+        </button>
+      </nav>
     </header>
 
     <section class="painel-desconforto">
@@ -95,8 +99,20 @@
         <p id="texto-desconforto">Nenhum desconforto selecionado.</p>
       </div>
     </section>
+
+    <div class="barra-navegacao">
+      <button class="btn-nav btn-voltar" id="btn-voltar" type="button">
+        ← Voltar
+      </button>
+
+      <button class="btn-nav btn-proximo" id="btn-proximo" type="button">
+        Próximo →
+      </button>
+    </div>
+
   </main>
 
   <script src="script.js"></script>
 </body>
+
 </html>

@@ -11,26 +11,32 @@
 <body>
   <main class="pagina-documento">
     <header class="topo-documento">
-      <button class="btn-topo" id="btn-voltar" type="button">← Voltar</button>
-
       <div class="titulo-area">
         <h1>Documento final da triagem</h1>
         <p>Resumo clínico estruturado para impressão e registro</p>
       </div>
 
-      <div class="grupo-topo">
-        <button id="btn-salvar-alerta" class="btn-topo">
+      <button class="btn-menu" id="btn-menu" type="button">
+        ☰
+      </button>
+
+      <nav class="menu-acoes" id="menu-acoes">
+        <button id="btn-salvar-alerta" class="btn-topo" type="button">
           Salvar dados
         </button>
-        <button class="btn-topo" id="btn-nova-triagem">Nova triagem</button>
-        <button id="btn-abrir-painel" class="btn-topo">
+
+        <button class="btn-topo" id="btn-nova-triagem" type="button">
+          Nova triagem
+        </button>
+
+        <button id="btn-abrir-painel" class="btn-topo" type="button">
           Abrir painel de alertas
         </button>
 
-        <button id="btn-abrir-comissao" class="btn-topo">
+        <button id="btn-abrir-comissao" class="btn-topo" type="button">
           Abrir Comissão de Dor
         </button>
-      </div>
+      </nav>
     </header>
 
     <section class="painel-documento">

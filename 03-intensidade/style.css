@@ -324,3 +324,148 @@ body {
     padding: 12px;
   }
 }
+
+.btn-menu {
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+.menu-acoes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.barra-navegacao {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(240, 249, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #dbeafe;
+  animation: subirBarra 0.35s ease;
+}
+
+.btn-nav {
+  flex: 1;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  color: white;
+  transition: 0.22s ease;
+}
+
+.btn-voltar {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+.btn-proximo {
+  background: linear-gradient(135deg, #2dd4bf, #0d9488);
+}
+
+.btn-menu,
+.btn-topo,
+.btn-nav {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.btn-menu:hover,
+.btn-topo:hover,
+.btn-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.btn-menu:active,
+.btn-topo:active,
+.btn-nav:active {
+  transform: scale(0.96);
+}
+
+.menu-acoes .btn-topo {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  box-shadow: 0 8px 18px rgba(245, 158, 11, 0.25);
+}
+
+@keyframes subirBarra {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes abrirMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (min-width: 769px) {
+  .btn-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .topo-intensidade {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .titulo-area {
+    text-align: left;
+  }
+
+  .menu-acoes {
+    position: absolute;
+    top: 72px;
+    right: 12px;
+    width: min(260px, calc(100vw - 24px));
+    display: none;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    z-index: 50;
+    animation: abrirMenu 0.22s ease;
+  }
+
+  .menu-acoes.aberto {
+    display: flex;
+  }
+
+  .menu-acoes .btn-topo {
+    width: 100%;
+  }
+
+  .painel-intensidade {
+    padding-bottom: 84px;
+  }
+}

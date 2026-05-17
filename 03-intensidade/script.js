@@ -102,3 +102,36 @@ btnProximo.addEventListener('click', () => {
 
   window.location.href = '../04-desconforto/index.html';
 });
+
+const btnMenu = document.getElementById("btn-menu");
+const menuAcoes = document.getElementById("menu-acoes");
+const btnLimparIntensidade = document.getElementById("btn-limpar-intensidade");
+
+if (btnMenu && menuAcoes) {
+  btnMenu.addEventListener("click", () => {
+    menuAcoes.classList.toggle("aberto");
+
+    btnMenu.textContent = menuAcoes.classList.contains("aberto")
+      ? "×"
+      : "☰";
+  });
+}
+
+if (btnLimparIntensidade) {
+  btnLimparIntensidade.addEventListener("click", () => {
+    intensidadeSelecionada = null;
+
+    localStorage.removeItem(chaveIntensidade);
+
+    cardsIntensidade.forEach((card) => {
+      card.classList.remove("ativa");
+    });
+
+    atualizarResumo();
+
+    if (menuAcoes) {
+      menuAcoes.classList.remove("aberto");
+      btnMenu.textContent = "☰";
+    }
+  });
+}

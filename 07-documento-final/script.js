@@ -976,3 +976,15 @@ async function enviarAlertaComissaoDor(dados, analiseProtocolo) {
   sessionStorage.setItem("alertaComissaoDorEnviado", "sim");
 }
 
+const btnMenu = document.getElementById("btn-menu");
+const menuAcoes = document.getElementById("menu-acoes");
+
+if (btnMenu && menuAcoes) {
+  btnMenu.addEventListener("click", () => {
+    menuAcoes.classList.toggle("aberto");
+
+    btnMenu.textContent = menuAcoes.classList.contains("aberto")
+      ? "×"
+      : "☰";
+  });
+}

@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Protocolo TEA</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main class="pagina-tea">
-    <header class="topo-tea">
-      <button class="btn-topo" id="btn-voltar" type="button">
-        ← Voltar
-      </button>
 
+    <header class="topo-tea">
       <div class="titulo-area">
         <h1>Observações complementares (TEA)</h1>
         <p>Marque os itens que se aplicam ao paciente durante a triagem</p>
       </div>
-
-      <button class="btn-topo" id="btn-proximo" type="button">
-        Próximo →
-      </button>
     </header>
 
     <section class="painel-tea">
@@ -78,8 +73,20 @@
         <p id="texto-tea">Nenhuma observação selecionada ainda.</p>
       </div>
     </section>
+
+    <div class="barra-navegacao">
+      <button class="btn-nav btn-voltar" id="btn-voltar" type="button">
+        ← Voltar
+      </button>
+
+      <button class="btn-nav btn-proximo" id="btn-proximo" type="button">
+        Próximo →
+      </button>
+    </div>
+
   </main>
 
   <script src="script.js"></script>
 </body>
+
 </html>
