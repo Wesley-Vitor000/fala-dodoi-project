@@ -469,3 +469,171 @@ body {
     padding-bottom: 84px;
   }
 }
+
+/* TITI FLUTUANTE */
+
+.titi-assistente {
+  position: fixed;
+  right: 24px;
+  bottom: 110px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  z-index: 9999;
+  animation: aparecerTiti 0.45s ease;
+}
+
+.titi-video-box {
+  width: 130px;
+  height: 130px;
+  min-width: 130px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  background: #63c955;
+
+  border: 5px solid white;
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.18),
+    0 0 25px rgba(34, 211, 238, 0.25);
+
+  animation: flutuarTiti 3s ease-in-out infinite;
+}
+
+.titi-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.titi-balao {
+  width: 280px;
+
+  background: white;
+
+  border-radius: 22px;
+  padding: 16px 18px;
+
+  border: 2px solid #dbeafe;
+
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+}
+
+.titi-balao strong {
+  display: block;
+  color: #0d9488;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.titi-balao p {
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .titi-assistente {
+    position: relative;
+
+    right: auto;
+    bottom: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    max-width: 680px;
+    margin: 14px auto;
+    padding: 0 12px;
+  }
+
+  .titi-video-box {
+    width: 92px;
+    height: 92px;
+    min-width: 92px;
+  }
+
+  .titi-balao {
+    width: auto;
+    max-width: 100%;
+
+    padding: 12px 13px;
+    border-radius: 18px 18px 18px 6px;
+  }
+
+  .titi-balao strong {
+    font-size: 0.95rem;
+  }
+
+  .titi-balao p {
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+}
+
+/* Arrastavel avatar*/
+
+.titi-assistente {
+  position: fixed;
+  right: 24px;
+  bottom: 110px;
+}
+
+.titi-video-box {
+  cursor: grab;
+  touch-action: none;
+}
+
+.titi-video-box:active {
+  cursor: grabbing;
+}
+
+/* Desliga a animação enquanto arrasta */
+.titi-assistente.arrastando .titi-video-box {
+  animation: none;
+}
+
+.titi-assistente {
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    top 0.05s linear;
+}
+
+.titi-video-box {
+  cursor: grab;
+  touch-action: none;
+}
+
+.titi-video-box:active {
+  cursor: grabbing;
+}
+
+.titi-assistente.arrastando .titi-video-box {
+  animation: none;
+}
+
+.titi-assistente.titi-ativo .titi-balao {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.titi-assistente.titi-descansando .titi-balao {
+  opacity: 0;
+  transform: translateX(18px);
+  pointer-events: none;
+}
+
+.titi-assistente.titi-descansando .titi-video-box {
+  opacity: 0.78;
+  filter: saturate(0.85);
+}
