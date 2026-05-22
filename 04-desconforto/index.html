@@ -26,18 +26,27 @@
         </button>
       </nav>
     </header>
-
     <section class="titi-assistente">
-      <div class="titi-video-box">
+
+      <div class="titi-balao" id="titi-balao">
+        <strong>Titi</strong>
+
+        <p id="titi-texto">
+          Escolha os sintomas que você está sentindo agora. Pode marcar mais de um se precisar. Tudo isso ajuda a
+          entender melhor como seu corpo está se sentindo.
+        </p>
+      </div>
+
+      <div class="titi-video-box" id="titi-box">
         <video autoplay muted loop playsinline class="titi-video">
-          <source src="../assets/titi/titi-avatar-loop.mp4" type="video/mp4">
+          <source src="../assets/titi/avatar/titi-avatar-loop.mp4" type="video/mp4">
         </video>
       </div>
 
-      <div class="titi-balao">
-        <strong>Titi</strong>
-        <p>Me mostra como é essa dor. Parece pontada, ardência, pressão ou falta de ar?</p>
-      </div>
+      <audio id="audio-titi">
+        <source src="/assets/titi/audio/titi_desconforto.m4a" type="audio/mpeg">
+      </audio>
+
     </section>
 
     <section class="painel-desconforto">

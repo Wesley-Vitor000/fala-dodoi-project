@@ -5,15 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intensidade da Dor</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
   <main class="pagina-intensidade">
+
     <header class="topo-intensidade">
+
       <div class="titulo-area">
         <h1>Qual a intensidade da dor?</h1>
-        <p>Escolha a figurinha que melhor representa o desconforto do paciente</p>
+
+        <p>
+          Escolha a figurinha que melhor representa o desconforto do paciente
+        </p>
       </div>
 
       <button class="btn-menu" id="btn-menu" type="button">
@@ -21,106 +28,196 @@
       </button>
 
       <nav class="menu-acoes" id="menu-acoes">
+
         <button class="btn-topo" id="btn-limpar-intensidade" type="button">
           Limpar seleção
         </button>
+
       </nav>
+
     </header>
 
     <section class="titi-assistente">
-      <div class="titi-video-box">
+
+      <div class="titi-balao" id="titi-balao">
+        <strong>Titi</strong>
+
+        <p id="titi-texto">
+          Agora me mostre o quanto essa dor incomoda você.
+          Sua dor é importante,
+          e entender a intensidade ajuda a cuidar de você
+          da melhor forma.
+        </p>
+      </div>
+
+      <div class="titi-video-box" id="titi-box">
         <video autoplay muted loop playsinline class="titi-video">
-          <source src="../assets/titi/titi-avatar-loop.mp4" type="video/mp4">
+          <source src="../assets/titi/avatar/titi-avatar-loop.mp4" type="video/mp4">
         </video>
       </div>
 
-      <div class="titi-balao">
-        <strong>Titi</strong>
-        <p>Agora escolha a carinha que parece com a sua dor.</p>
-      </div>
+      <audio id="audio-titi">
+        <source src="/assets/titi/audio/titi_intensidade.m4a" type="audio/mpeg">
+      </audio>
+
     </section>
 
+    <!-- PAINEL -->
+
     <section class="painel-intensidade">
+
+      <!-- PACIENTE -->
+
       <div class="info-paciente" id="info-paciente"></div>
 
+      <!-- ESCALA -->
+
       <div class="grade-intensidade">
+
+        <!-- SEM DOR -->
+
         <button class="card-intensidade sem-dor" data-valor="Sem dor" type="button">
+
           <div class="area-imagem">
             <img alt="Sem dor" class="imagem-escala" data-tipo="sem-dor">
           </div>
 
           <div class="area-texto">
-            <span class="titulo-card">Sem dor</span>
+            <span class="titulo-card">
+              Sem dor
+            </span>
           </div>
+
         </button>
 
+        <!-- LEVE -->
+
         <button class="card-intensidade leve" data-valor="Leve" type="button">
+
           <div class="area-imagem">
             <img alt="Dor leve" class="imagem-escala" data-tipo="leve">
           </div>
 
           <div class="area-texto">
-            <span class="titulo-card">Dor leve</span>
+            <span class="titulo-card">
+              Dor leve
+            </span>
           </div>
+
         </button>
 
+        <!-- MODERADA -->
+
         <button class="card-intensidade moderada" data-valor="Moderada" type="button">
+
           <div class="area-imagem">
             <img alt="Dor moderada" class="imagem-escala" data-tipo="moderada">
           </div>
 
           <div class="area-texto">
-            <span class="titulo-card">Dor moderada</span>
+            <span class="titulo-card">
+              Dor moderada
+            </span>
           </div>
+
         </button>
 
+        <!-- FORTE -->
+
         <button class="card-intensidade forte" data-valor="Forte" type="button">
+
           <div class="area-imagem">
             <img alt="Dor forte" class="imagem-escala" data-tipo="forte">
           </div>
 
           <div class="area-texto">
-            <span class="titulo-card">Dor forte</span>
+            <span class="titulo-card">
+              Dor forte
+            </span>
           </div>
+
         </button>
 
+        <!-- INSUPORTÁVEL -->
+
         <button class="card-intensidade insuportavel" data-valor="Insuportável" type="button">
+
           <div class="area-imagem">
             <img alt="Dor insuportável" class="imagem-escala" data-tipo="insuportavel">
           </div>
 
           <div class="area-texto">
-            <span class="titulo-card">Dor insuportável</span>
+            <span class="titulo-card">
+              Dor insuportável
+            </span>
           </div>
+
         </button>
+
       </div>
+
+      <!-- REFERÊNCIA -->
+
+      <div class="referencia-wrapper">
+
+        <button class="referencia-btn" id="btn-referencia" type="button">
+
+          <img src="/03-intensidade/img/icons/lampada_creditos.png" alt="Créditos">
+
+        </button>
+
+        <div class="referencia-popup" id="popup-referencia">
+
+          <p>
+            Escala ilustrada baseada em personagens da Turma da Mônica.
+            © Mauricio de Sousa Produções.
+
+            <br></br>
+            Ícone: Smashicons — Flaticon.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- RESUMO -->
 
       <div class="resumo-selecao">
-        <h2>Intensidade selecionada</h2>
-        <p id="texto-intensidade">Nenhuma intensidade selecionada.</p>
+
+        <h2>
+          Intensidade selecionada
+        </h2>
+
+        <p id="texto-intensidade">
+          Nenhuma intensidade selecionada.
+        </p>
+
       </div>
+
     </section>
 
+    <!-- BARRA -->
+
     <div class="barra-navegacao">
+
       <button class="btn-nav btn-voltar" id="btn-voltar" type="button">
+
         ← Voltar
+
       </button>
 
       <button class="btn-nav btn-proximo" id="btn-proximo" type="button">
-        Próximo →
-      </button>
-    </div>
 
+        Próximo →
+
+      </button>
+
+    </div>
 
   </main>
 
-  <footer class="footer-creditos">
-    <p>
-      Escala ilustrada com personagens da Turma da Mônica © Mauricio de Sousa Produções. Todos os direitos reservados.
-    </p>
-  </footer>
-
   <script src="script.js"></script>
+
 </body>
 
 </html>

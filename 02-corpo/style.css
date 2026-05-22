@@ -516,10 +516,11 @@ g.parte-corpo.selecionada * {
   }
 }
 
-/* TITI FLUTUANTE */
+/* TITI FLUTUANTE *//* TITI */
 
 .titi-assistente {
   position: fixed;
+
   right: 24px;
   bottom: 110px;
 
@@ -527,25 +528,23 @@ g.parte-corpo.selecionada * {
   align-items: center;
   gap: 14px;
 
-  z-index: 9999;
-  animation: aparecerTiti 0.45s ease;
+  z-index: 999;
 }
 
 .titi-video-box {
   width: 130px;
   height: 130px;
-  min-width: 130px;
 
   border-radius: 50%;
   overflow: hidden;
 
-  background: #63c955;
-
   border: 5px solid white;
 
+  background: #7ccf68;
+
   box-shadow:
-    0 15px 35px rgba(15, 23, 42, 0.18),
-    0 0 25px rgba(34, 211, 238, 0.25);
+    0 10px 28px rgba(15, 23, 42, 0.18),
+    0 0 25px rgba(255, 255, 255, 0.18);
 
   animation: flutuarTiti 3s ease-in-out infinite;
 }
@@ -557,126 +556,112 @@ g.parte-corpo.selecionada * {
 }
 
 .titi-balao {
-  width: 280px;
+  width: 320px;
 
-  background: white;
+  background: rgba(255, 255, 255, 0.96);
 
   border-radius: 22px;
-  padding: 16px 18px;
+
+  padding: 18px 20px;
 
   border: 2px solid #dbeafe;
 
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.12);
+
+  backdrop-filter: blur(12px);
+
+  animation: aparecerBalao 0.5s ease;
 }
 
 .titi-balao strong {
   display: block;
+
   color: #0d9488;
-  font-size: 1rem;
-  margin-bottom: 4px;
+
+  font-size: 1.15rem;
+  font-weight: 800;
+
+  margin-bottom: 8px;
 }
 
 .titi-balao p {
   color: #334155;
-  line-height: 1.5;
+
+  line-height: 1.65;
+
+  font-size: 1rem;
+}
+
+@keyframes flutuarTiti {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes aparecerBalao {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* MOBILE */
 
 @media (max-width: 768px) {
 
-.titi-assistente {
-  position: fixed;
+  .titi-assistente {
+    right: 14px;
+    bottom: 90px;
 
-  right: 10px;
-  bottom: 95px;
-
-  align-items: flex-start;
-  gap: 10px;
-
-  margin: 0;
-  padding: 0;
-}
+    gap: 10px;
+  }
 
   .titi-video-box {
-    width: 92px;
-    height: 92px;
-    min-width: 92px;
+    width: 90px;
+    height: 90px;
   }
 
   .titi-balao {
-    width: auto;
-    max-width: 100%;
+    width: 210px;
 
-    padding: 12px 13px;
-    border-radius: 18px 18px 18px 6px;
+    padding: 14px 15px;
   }
 
   .titi-balao strong {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .titi-balao p {
-    font-size: 0.88rem;
-    line-height: 1.4;
+    font-size: 0.90rem;
+    line-height: 1.45;
   }
 }
 
-/* Arrastavel avatar*/
-
 .titi-assistente {
-  position: fixed;
-  right: 24px;
-  bottom: 110px;
-}
-
-.titi-video-box {
-  cursor: grab;
-  touch-action: none;
-}
-
-.titi-video-box:active {
-  cursor: grabbing;
-}
-
-/* Desliga a animação enquanto arrasta */
-.titi-assistente.arrastando .titi-video-box {
-  animation: none;
-}
-
-.titi-assistente {
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease,
-    top 0.05s linear;
-}
-
-.titi-video-box {
-  cursor: grab;
-  touch-action: none;
-}
-
-.titi-video-box:active {
-  cursor: grabbing;
-}
-
-.titi-assistente.arrastando .titi-video-box {
-  animation: none;
-}
-
-.titi-assistente.titi-ativo .titi-balao {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-.titi-assistente.titi-descansando .titi-balao {
   opacity: 0;
-  transform: translateX(18px);
   pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.titi-assistente.titi-descansando .titi-video-box {
-  opacity: 0.78;
-  filter: saturate(0.85);
+.titi-assistente.titi-visivel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.titi-assistente.titi-sumindo {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
 }

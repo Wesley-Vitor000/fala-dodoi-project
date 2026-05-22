@@ -27,16 +27,31 @@
     </header>
 
     <section class="titi-assistente">
-      <div class="titi-video-box">
+
+      <div class="titi-balao" id="titi-balao">
+        <strong>Titi</strong>
+
+        <p id="titi-texto">
+          Oi! Eu sou o Tití.
+          Toque na parte do corpo onde está doendo
+          ou incomodando você.
+          Pode mostrar com calma,
+          eu vou ajudar a equipe
+          a entender melhor
+          o que você está sentindo.
+        </p>
+      </div>
+
+      <div class="titi-video-box" id="titi-box">
         <video autoplay muted loop playsinline class="titi-video">
-          <source src="../assets/titi/titi-avatar-loop.mp4" type="video/mp4">
+          <source src="../assets/titi/avatar/titi-avatar-loop.mp4" type="video/mp4">
         </video>
       </div>
 
-      <div class="titi-balao">
-        <strong>Titi</strong>
-        <p id="titi-texto">Oi! Toque no lugar onde está doendo.</p>
-      </div>
+      <audio id="audio-titi">
+        <source src="/assets/titi/audio/titi_corpo.m4a">
+      </audio>
+
     </section>
 
     <section class="painel-corpo">

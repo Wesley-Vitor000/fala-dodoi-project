@@ -637,3 +637,285 @@ body {
   opacity: 0.78;
   filter: saturate(0.85);
 }
+
+/* Aqui ficará o estilo dos creditos da escala de intensidade */
+/* REFERÊNCIA DA ESCALA */
+
+.referencia-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 10px 0 14px;
+}
+
+.referencia-btn {
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  opacity: 0.75;
+  transition: 0.2s ease;
+}
+
+.referencia-btn:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.referencia-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.referencia-popup {
+  position: absolute;
+
+  left: 34px;
+  top: -6px;
+
+  width: 260px;
+
+  background: white;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 14px;
+
+  padding: 12px 14px;
+
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+
+  font-size: 0.74rem;
+  line-height: 1.45;
+
+  color: #475569;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: translateY(6px);
+
+  transition: 0.25s ease;
+
+  z-index: 100;
+}
+
+.referencia-popup p {
+  margin: 0 0 6px;
+}
+
+.referencia-popup p:last-child {
+  margin-bottom: 0;
+}
+
+.referencia-popup.aberto {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.resumo-selecao {
+  width: min(100%, 980px);
+  margin: 0 auto 18px;
+}
+
+/* AJUSTE FINAL - REFERÊNCIA + RESUMO */
+
+.referencia-wrapper {
+  width: min(100%, 980px);
+  margin: 10px auto 10px;
+  justify-content: flex-start;
+}
+
+.resumo-selecao {
+  width: min(100%, 980px);
+  max-width: 980px;
+  margin: 0 auto 22px;
+  padding: 18px 22px;
+}
+
+@media (max-width: 768px) {
+  .referencia-wrapper {
+    width: 100%;
+    padding: 0 4px;
+    margin: 8px auto 10px;
+  }
+
+  .resumo-selecao {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 18px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resumo-selecao {
+    padding: 14px 16px;
+  }
+
+  .resumo-selecao h2 {
+    font-size: 1rem;
+  }
+
+  .resumo-selecao p {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* TITI FLUTUANTE *//* TITI */
+
+.titi-assistente {
+  position: fixed;
+
+  right: 24px;
+  bottom: 110px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  z-index: 999;
+}
+
+.titi-video-box {
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: 5px solid white;
+
+  background: #7ccf68;
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.18),
+    0 0 25px rgba(255, 255, 255, 0.18);
+
+  animation: flutuarTiti 3s ease-in-out infinite;
+}
+
+.titi-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.titi-balao {
+  width: 320px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-radius: 22px;
+
+  padding: 18px 20px;
+
+  border: 2px solid #dbeafe;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.12);
+
+  backdrop-filter: blur(12px);
+
+  animation: aparecerBalao 0.5s ease;
+}
+
+.titi-balao strong {
+  display: block;
+
+  color: #0d9488;
+
+  font-size: 1.15rem;
+  font-weight: 800;
+
+  margin-bottom: 8px;
+}
+
+.titi-balao p {
+  color: #334155;
+
+  line-height: 1.65;
+
+  font-size: 1rem;
+}
+
+@keyframes flutuarTiti {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes aparecerBalao {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .titi-assistente {
+    right: 14px;
+    bottom: 90px;
+
+    gap: 10px;
+  }
+
+  .titi-video-box {
+    width: 90px;
+    height: 90px;
+  }
+
+  .titi-balao {
+    width: 210px;
+
+    padding: 14px 15px;
+  }
+
+  .titi-balao strong {
+    font-size: 1rem;
+  }
+
+  .titi-balao p {
+    font-size: 0.90rem;
+    line-height: 1.45;
+  }
+}
+
+.titi-assistente {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.titi-assistente.titi-visivel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.titi-assistente.titi-sumindo {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
