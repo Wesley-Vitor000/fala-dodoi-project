@@ -1,3 +1,14 @@
+if (
+  sessionStorage.getItem(
+    "triagemAutenticada"
+  ) !== "true"
+) {
+
+  window.location.href =
+    "../login-triagem/index.html";
+
+}
+
 const chavePaciente = 'dadosPacienteTriagem';
 const chaveLocais = 'locaisDorTriagem';
 const chaveIntensidade = 'intensidadeDorTriagem';
@@ -987,4 +998,22 @@ if (btnMenu && menuAcoes) {
       ? "×"
       : "☰";
   });
+}
+
+const btnSairSessao =
+  document.getElementById("btn-sair-sessao");
+
+if (btnSairSessao) {
+
+  btnSairSessao.addEventListener("click", () => {
+
+    sessionStorage.removeItem(
+      "triagemAutenticada"
+    );
+
+    window.location.href =
+      "../login-escolha/index.html";
+
+  });
+
 }

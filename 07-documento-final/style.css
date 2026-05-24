@@ -1341,3 +1341,54 @@ body {
     width: 100%;
   }
 }
+
+
+.btn-sair {
+  border: none;
+
+  height: 46px;
+
+  padding: 0 16px;
+
+  border-radius: 14px;
+
+  background: linear-gradient(135deg,
+      #fff1f2,
+      #ffe4e6);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.btn-sair:hover {
+  transform: translateY(-2px);
+
+  background: linear-gradient(135deg,
+      #ffe4e6,
+      #fecdd3);
+}
+
+.btn-sair img {
+  width: 18px;
+  height: 18px;
+
+  filter:
+    invert(21%) sepia(93%) saturate(2670%) hue-rotate(347deg) brightness(91%) contrast(95%);
+}
+
+.btn-sair span {
+  font-size: 0.92rem;
+  font-weight: 700;
+
+  color: #dc2626;
+}

@@ -1,3 +1,14 @@
+if (
+  sessionStorage.getItem(
+    "comissaoAutenticada"
+  ) !== "true"
+) {
+
+  window.location.href =
+    "../login-comissao/index.html";
+
+}
+
 const API_COMISSAO = "https://fala-dodoi-project.onrender.com/alertas-comissao";
 const API_FINALIZAR_BASE = "https://fala-dodoi-project.onrender.com/alerta-comissao";
 
@@ -429,6 +440,24 @@ async function iniciarTela() {
     console.error("Erro ao carregar tela da Comissão de Dor:", erro);
     renderizarEstadoVazio();
   }
+}
+
+const btnSairSessao =
+  document.getElementById("btn-sair-sessao");
+
+if (btnSairSessao) {
+
+  btnSairSessao.addEventListener("click", () => {
+
+    sessionStorage.removeItem(
+      "comissaoAutenticada"
+    );
+
+    window.location.href =
+      "../login-escolha/index.html";
+
+  });
+
 }
 
 iniciarTela();

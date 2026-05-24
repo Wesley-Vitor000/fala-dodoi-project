@@ -1,3 +1,14 @@
+if (
+  sessionStorage.getItem(
+    "triagemAutenticada"
+  ) !== "true"
+) {
+
+  window.location.href =
+    "../login-triagem/index.html";
+
+}
+
 const formIdentificacao = document.getElementById('form-identificacao');
 const mensagem = document.getElementById('mensagem');
 

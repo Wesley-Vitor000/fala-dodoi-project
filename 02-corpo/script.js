@@ -1,3 +1,14 @@
+if (
+  sessionStorage.getItem(
+    "triagemAutenticada"
+  ) !== "true"
+) {
+
+  window.location.href =
+    "../login-triagem/index.html";
+
+}
+
 const chavePaciente = 'dadosPacienteTriagem';
 const chaveLocais = 'locaisDorTriagem';
 

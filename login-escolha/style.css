@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dff7f1 0%,
+      #eff8ff 100%
+    );
+
+  color: #0f172a;
+}
+
+.pagina-escolha {
+  width: 100%;
+}
+
+.card-escolha {
+  width: 100%;
+  max-width: 620px;
+
+  margin: 0 auto;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-radius: 34px;
+
+  padding: 38px 30px;
+
+  border: 2px solid #dbeafe;
+
+  box-shadow:
+    0 22px 48px rgba(15, 23, 42, 0.12);
+
+  backdrop-filter: blur(10px);
+}
+
+.topo-escolha {
+  text-align: center;
+
+  margin-bottom: 34px;
+}
+
+.titi-escolha {
+  width: 140px;
+
+  object-fit: contain;
+
+  margin-bottom: 12px;
+
+  filter:
+    drop-shadow(0 14px 24px rgba(15, 23, 42, 0.14));
+
+  animation: flutuarTiti 3s ease-in-out infinite;
+}
+
+.topo-escolha h1 {
+  color: #0d9488;
+
+  font-size: 2.2rem;
+  font-weight: 800;
+
+  margin-bottom: 8px;
+}
+
+.topo-escolha p {
+  color: #64748b;
+
+  font-size: 1rem;
+}
+
+.opcoes-acesso {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.card-opcao {
+  border: 2px solid #dbeafe;
+
+  border-radius: 24px;
+
+  padding: 24px 18px;
+
+  background: white;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.card-opcao:hover {
+  transform: translateY(-4px);
+
+  border-color: #99f6e4;
+
+  box-shadow:
+    0 16px 30px rgba(15, 23, 42, 0.10);
+}
+
+.card-opcao strong {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #0f172a;
+
+  font-size: 1.1rem;
+}
+
+.card-opcao small {
+  color: #64748b;
+
+  line-height: 1.5;
+}
+
+.icone-opcao {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 18px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ccfbf1,
+      #dbeafe
+    );
+
+  font-size: 1.8rem;
+}
+
+.comissao .icone-opcao {
+  background:
+    linear-gradient(
+      135deg,
+      #fee2e2,
+      #fecaca
+    );
+}
+
+@keyframes flutuarTiti {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .card-escolha {
+    padding: 30px 22px;
+  }
+
+  .opcoes-acesso {
+    grid-template-columns: 1fr;
+  }
+
+  .titi-escolha {
+    width: 110px;
+  }
+
+  .topo-escolha h1 {
+    font-size: 1.8rem;
+  }
+
+}
+
+/* BRILHO NO TÍTULO */
+
+.topo-escolha h1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.topo-escolha h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+
+  animation: brilho 2.5s infinite;
+}
+
+@keyframes brilho {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 120%;
+  }
+}
+
+/* FADE DO TITI */
+
+.titi-escolha {
+  padding-top: 12px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 78%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 78%,
+    transparent 100%
+  );
+}

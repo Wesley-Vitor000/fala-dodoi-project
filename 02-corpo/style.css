@@ -151,9 +151,12 @@ g.parte-corpo.selecionada * {
 }
 
 @keyframes pulsar {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.78;
   }
@@ -516,7 +519,8 @@ g.parte-corpo.selecionada * {
   }
 }
 
-/* TITI FLUTUANTE *//* TITI */
+/* TITI FLUTUANTE */
+/* TITI */
 
 .titi-assistente {
   position: fixed;
@@ -594,7 +598,9 @@ g.parte-corpo.selecionada * {
 }
 
 @keyframes flutuarTiti {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
 
