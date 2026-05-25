@@ -26,6 +26,297 @@ let analiseGlobal = null;
 const API_ALERTA_GERAL = "https://fala-dodoi-project.onrender.com/alerta";
 const API_ALERTA_COMISSAO = "https://fala-dodoi-project.onrender.com/alerta-comissao";
 
+/* ========================= */
+/* REFERÊNCIAS CIENTÍFICAS   */
+/* ========================= */
+/*
+  Referências enviadas pela equipe.
+  Não adicionar, remover ou alterar sem autorização.
+*/
+
+const referenciasMedidas = {
+  "compressa fria": `
+BLEAKLEY, Chris M.; COSTELLO, Joseph T.; GLASGOW, Paul D.
+Should athletes return to sport after applying ice?
+A systematic review of the effect of local cooling on functional performance.
+Sports Medicine, v. 43, n. 1, p. 69–87, 2013.
+`,
+
+  "compressa morna": `
+FREIWALD, Jürgen et al.
+Effects of heat and cold therapy on muscle function and recovery:
+a systematic review.
+Journal of Clinical Medicine, v. 7, n. 11, p. 426, 2018.
+`,
+
+  "ambiente calmo": `
+ASHBURNER, Jill; ZIVIANI, Jenny; RODGER, Sylvia.
+Sensory processing and classroom emotional, behavioral,
+and educational outcomes in children with autism spectrum disorder.
+American Journal of Occupational Therapy,
+v. 62, n. 5, p. 564–573, 2008.
+`,
+
+  "redução de estímulos sensoriais": `
+BEN-SASSON, Ayelet et al.
+A meta-analysis of sensory modulation symptoms
+in individuals with autism spectrum disorders.
+Journal of Autism and Developmental Disorders,
+v. 39, n. 1, p. 1–11, 2009.
+`,
+
+  "ambiente ventilado": `
+ULRICH, Roger S. et al.
+A review of the research literature on evidence-based healthcare design.
+HERD: Health Environments Research & Design Journal,
+New York, v. 1, n. 3, p. 61–125, 2008.
+`,
+
+  "hidratação": `
+PEROUTKA, Stephen J.
+What turns on a migraine?
+A systematic review of migraine precipitating factors.
+Current Pain and Headache Reports,
+v. 18, n. 10, p. 454, 2014.
+`,
+
+  "repouso": `
+FINAN, Patrick H.; GOODIN, Brien R.; SMITH, Michael T.
+The association of sleep and pain:
+an update and a path forward.
+The Journal of Pain,
+Philadelphia, v. 14, n. 12, p. 1539–1552, 2013.
+`,
+
+  "massoterapia": `
+FIELD, Tiffany.
+Massage therapy research review.
+Complementary Therapies in Clinical Practice,
+v. 20, n. 4, p. 224–229, 2014.
+`,
+
+  "acupuntura": `
+VICKERS, Andrew J. et al.
+Acupuncture for chronic pain:
+individual patient data meta-analysis.
+Archives of Internal Medicine,
+v. 172, n. 19, p. 1444–1453, 2012.
+`,
+
+  "respiração guiada": `
+JERATH, Ravinder et al.
+Physiology of long pranayamic breathing:
+neural respiratory elements may provide a mechanism
+that explains how slow deep breathing shifts the autonomic nervous system.
+Medical Hypotheses,
+v. 85, n. 5, p. 486–496, 2015.
+`,
+
+  "exercícios respiratórios": `
+KROMENACKER, Bryan W. et al.
+Vagal mediation of low-frequency heart rate variability
+during slow yogic breathing.
+Psychosomatic Medicine,
+Hagerstown, v. 80, n. 6, p. 581–587, 2018.
+`,
+
+  "técnicas de relaxamento": `
+CONRAD, Andrea; ROTH, Walton T.
+Muscle relaxation therapy for anxiety disorders:
+it works but how?
+Journal of Anxiety Disorders,
+v. 21, n. 3, p. 243–264, 2007.
+`,
+
+  "elevação do membro afetado": `
+RABE, Eberhard et al.
+Indications for medical compression stockings
+in venous and lymphatic disorders:
+an evidence-based consensus statement.
+Phlebology,
+London, v. 33, n. 3, p. 163–184, 2018.
+`,
+
+  "evitar atrito ou pressão": `
+POTT, Franciele Soares et al.
+Pressure injury prevention measures:
+overview of systematic reviews.
+Revista da Escola de Enfermagem da USP,
+São Paulo, v. 57, e20230039, 2023.
+`,
+
+  "musicoterapia": `
+THOMA, Myriam V. et al.
+The effect of music on the human stress response.
+PLoS ONE,
+v. 8, n. 8, e70156, 2013.
+`,
+
+  "acolhimento": `
+BOSHOFF, Kobie et al.
+A meta-synthesis of how parents of children with autism
+describe their experience of accessing and using routine healthcare services
+for their children.
+Health & Social Care in the Community,
+v. 29, n. 6, p. 1668–1682, 2021.
+`,
+
+  "falta de ar / pressão no peito": `
+AMERICAN HEART ASSOCIATION.
+Heart disease and stroke statistics—2020 update.
+Circulation,
+v. 141, n. 9, p. e139–e596, 2020.
+`
+};
+
+
+/* ========================= */
+/* CONEXÃO MEDIDA → REFERÊNCIA */
+/* ========================= */
+/*
+  Aqui NÃO estamos criando referência nova.
+  Só estamos conectando o jeito que a medida aparece no sistema
+  com o nome oficial da referência enviada.
+*/
+
+const mapaMedidasReferencias = {
+  "ambiente silencioso": "ambiente calmo",
+  "redução de estímulos": "redução de estímulos sensoriais",
+  "compressa fria no local": "compressa fria",
+  "elevação de membro": "elevação do membro afetado",
+  "controle da respiração": "respiração guiada"
+};
+
+function normalizarTextoReferencia(texto) {
+  return texto
+    .toLowerCase()
+    .trim();
+}
+
+function separarMedidas(textoMedida) {
+  return textoMedida
+    .split("+")
+    .map((medida) => medida.trim())
+    .filter(Boolean);
+}
+
+function buscarReferenciaMedida(nomeMedida) {
+  const medidaNormalizada =
+    normalizarTextoReferencia(nomeMedida);
+
+  const chaveReferencia =
+    mapaMedidasReferencias[medidaNormalizada] ||
+    medidaNormalizada;
+
+  return referenciasMedidas[chaveReferencia] || null;
+}
+
+function criarBotaoReferencia(nomeMedida) {
+  const referencia =
+    buscarReferenciaMedida(nomeMedida);
+
+  if (!referencia) {
+    return "";
+  }
+
+  return `
+    <button
+      class="btn-referencia-medida"
+      type="button"
+      data-referencia="${encodeURIComponent(referencia)}"
+      title="Ver referência científica"
+    >
+      <img
+        src="../assets/icon/referencia_ico.png"
+        alt="Referência científica"
+      >
+    </button>
+  `;
+}
+
+function criarMedidaComReferencia(nomeMedida) {
+  return `
+    <span class="medida-com-referencia">
+      <span>${nomeMedida}</span>
+      ${criarBotaoReferencia(nomeMedida)}
+    </span>
+  `;
+}
+
+function criarMedidasComReferencias(textoMedida) {
+  const medidas =
+    separarMedidas(textoMedida);
+
+  return medidas
+    .map((medida) => criarMedidaComReferencia(medida))
+    .join('<span class="separador-medida"> + </span>');
+}
+
+function abrirModalReferencia(textoReferencia) {
+  const modalAntigo =
+    document.querySelector(".modal-referencia");
+
+  if (modalAntigo) {
+    modalAntigo.remove();
+  }
+
+  const modal =
+    document.createElement("div");
+
+  modal.className =
+    "modal-referencia";
+
+  modal.innerHTML = `
+    <div class="modal-referencia-conteudo">
+
+      <button
+        class="fechar-modal-referencia"
+        type="button"
+      >
+        ×
+      </button>
+
+      <h3>Referência científica</h3>
+
+      <p>
+        ${textoReferencia.replace(/\n/g, "<br>")}
+      </p>
+
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const btnFechar =
+    modal.querySelector(".fechar-modal-referencia");
+
+  btnFechar.addEventListener("click", () => {
+    modal.remove();
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.remove();
+    }
+  });
+}
+
+document.addEventListener("click", (event) => {
+  const botao =
+    event.target.closest(".btn-referencia-medida");
+
+  if (!botao) {
+    return;
+  }
+
+  const referencia =
+    decodeURIComponent(botao.dataset.referencia);
+
+  abrirModalReferencia(referencia);
+});
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   preencherDocumento();
 });
@@ -527,9 +818,12 @@ function gerarHtmlProtocolo(protocolo) {
       </div>
 
       <div class="protocolo-grupo medida-indicada">
-        <h4>Medida não farmacológica indicada</h4>
-        <p>${protocolo.medida}</p>
-      </div>
+  <h4>Medida não farmacológica indicada</h4>
+
+  <p class="medida-principal">
+    ${criarMedidasComReferencias(protocolo.medida)}
+  </p>
+</div>
 
       ${criarListaHtml('Execução — passo a passo clínico', protocolo.execucao, 'execucao-clinica')}
       ${criarListaHtml('Cuidados específicos para TEA', protocolo.cuidados, 'cuidados-tea')}
@@ -580,12 +874,12 @@ function gerarAnaliseProtocolo(desconfortos) {
 
   const protocoloFinal = protocoloBase
     ? {
-        ...protocoloBase,
-        classificacao: classificacao.nivel,
-        emoji: classificacao.emoji,
-        classe: classificacao.classe,
-        planoReavaliacao
-      }
+      ...protocoloBase,
+      classificacao: classificacao.nivel,
+      emoji: classificacao.emoji,
+      classe: classificacao.classe,
+      planoReavaliacao
+    }
     : null;
 
   const sintomasTexto = sintomas.length
