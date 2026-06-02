@@ -417,13 +417,13 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .bloco-suporte h2 {
   font-family: 'Work Sans', sans-serif;
   color: #0d9488;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
 .descricao-suporte {
@@ -435,44 +435,111 @@ body {
 .opcoes-suporte {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
+/* Card clicável */
 .item-radio {
+  position: relative;
+
+  min-height: 86px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
 
-  padding: 14px 12px;
+  padding: 18px 14px;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 18px;
 
   background: #f8fafc;
 
   cursor: pointer;
 
-  font-weight: 700;
-  color: #0f172a;
+  text-align: center;
 
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    background 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
 }
 
-.item-radio:hover {
-  background: #ecfeff;
-  border-color: #0ea5e9;
-  transform: translateY(-1px);
-}
-
+/* Esconde o radio feio do navegador */
 .item-radio input {
-  width: 17px;
-  height: 17px;
-  accent-color: #0d9488;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
+
+/* Bolinha customizada */
+.item-radio::before {
+  content: "";
+
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #94a3b8;
+  border-radius: 50%;
+
+  background: white;
+
+  position: absolute;
+  top: 14px;
+  left: 14px;
+
+  transition:
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+/* Texto */
+.item-radio span {
+  color: #0f172a;
+
+  font-size: 1rem;
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+/* Hover */
+.item-radio:hover {
+  background: #f0fdfa;
+  border-color: #5eead4;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 22px rgba(13, 148, 136, 0.12);
+}
+
+/* Card selecionado */
+.item-radio:has(input:checked) {
+  background: linear-gradient(135deg, #ecfeff, #f0fdfa);
+
+  border-color: #0d9488;
+
+  box-shadow:
+    0 12px 28px rgba(13, 148, 136, 0.18);
+}
+
+/* Bolinha selecionada */
+.item-radio:has(input:checked)::before {
+  border-color: #0d9488;
+
+  background:
+    radial-gradient(circle, #0d9488 0 42%, white 45% 100%);
+
+  box-shadow:
+    0 0 0 4px rgba(13, 148, 136, 0.12);
+}
+
+/* Campo reforçador */
 
 .grupo-campo input {
   width: 100%;
@@ -480,7 +547,7 @@ body {
   padding: 14px 16px;
 
   border: 2px solid #cbd5e1;
-  border-radius: 12px;
+  border-radius: 14px;
 
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
@@ -492,27 +559,75 @@ body {
 
 .grupo-campo input:focus {
   outline: none;
+
   border-color: #0ea5e9;
-  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+
+  box-shadow:
+    0 0 0 4px rgba(14, 165, 233, 0.12);
 }
 
-@media (max-width: 600px) {
+/* TABLET */
+
+@media (max-width: 768px) {
   .opcoes-suporte {
-    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
+  .item-radio {
+    min-height: 78px;
+    padding: 16px 12px;
+  }
+
+  .item-radio span {
+    font-size: 0.95rem;
+  }
+}
+
+/* CELULAR */
+
+@media (max-width: 520px) {
   .bloco-suporte {
     padding: 16px;
     border-radius: 16px;
   }
 
+  .opcoes-suporte {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
   .item-radio {
+    min-height: 54px;
+
     justify-content: flex-start;
+
+    padding: 14px 16px 14px 46px;
+
+    border-radius: 14px;
+
+    text-align: left;
+
+    transform: none;
+  }
+
+  .item-radio::before {
+    top: 50%;
+    left: 16px;
+
+    transform: translateY(-50%);
+  }
+
+  .item-radio:hover {
+    transform: none;
+  }
+
+  .item-radio span {
+    font-size: 0.96rem;
   }
 
   .grupo-campo input {
     padding: 12px 12px;
     font-size: 0.95rem;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 }

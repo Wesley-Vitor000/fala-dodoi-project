@@ -1013,6 +1013,8 @@ function preencherDocumento() {
   });
   const tea = lerStorage(chaveTea, {
     itens: [],
+    nivelSuporte: '',
+    reforcador: '',
     observacoes: ''
   });
 
@@ -1035,8 +1037,17 @@ function preencherDocumento() {
   document.getElementById('doc-sinais').textContent = anamnese.sinaisAssociados || '-';
   document.getElementById('doc-observacoes').textContent = anamnese.observacoes || '-';
 
-  document.getElementById('doc-tea').textContent = tea.itens.length ? tea.itens.join(', ') : '-';
-  document.getElementById('doc-tea-obs').textContent = tea.observacoes || '-';
+  document.getElementById('doc-tea').textContent =
+    tea.itens?.length ? tea.itens.join(', ') : '-';
+
+  document.getElementById('doc-nivel-suporte').textContent =
+    tea.nivelSuporte || '-';
+
+  document.getElementById('doc-reforcador').textContent =
+    tea.reforcador || '-';
+
+  document.getElementById('doc-tea-obs').textContent =
+    tea.observacoes || '-';
 
   dadosGlobais = {
     paciente,
@@ -1237,6 +1248,8 @@ async function enviarAlertaComissaoDor(dados, analiseProtocolo) {
     locais: dados.locais,
     intensidade: dados.intensidade ? dados.intensidade.valor : "Não informada",
     comportamentosTea: dados.tea.itens || [],
+    nivelSuporteTea: dados.tea.nivelSuporte || "Não informado",
+    reforcadorTea: dados.tea.reforcador || "Não informado",
     observacoesTea: dados.tea.observacoes || "Nenhuma observação registrada.",
 
     interpretacao: analiseProtocolo.interpretacaoClinica,

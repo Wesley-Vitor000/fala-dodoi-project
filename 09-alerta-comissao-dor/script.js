@@ -252,6 +252,22 @@ function abrirDetalhes(id) {
   criarChips("sinais-lista", alerta.sintomas ? alerta.sintomas.split(", ") : []);
   criarChips("tea-lista", alerta.comportamentosTea || []);
 
+  const campoNivelSuporte =
+    document.getElementById("tea-nivel-suporte");
+
+  if (campoNivelSuporte) {
+    campoNivelSuporte.textContent =
+      alerta.nivelSuporteTea || "Não informado";
+  }
+
+  const campoReforcador =
+    document.getElementById("tea-reforcador");
+
+  if (campoReforcador) {
+    campoReforcador.textContent =
+      alerta.reforcadorTea || "Não informado";
+  }
+
   document.getElementById("tea-observacoes").textContent =
     alerta.observacoesTea || "Nenhuma observação TEA registrada.";
 

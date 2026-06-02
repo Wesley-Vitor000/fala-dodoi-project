@@ -78,7 +78,7 @@ function carregarTeaSalvo() {
   const tea = JSON.parse(dados);
 
   checksTea.forEach((check) => {
-    check.checked = tea.itens.includes(check.value);
+    check.checked = tea.itens?.includes(check.value) || false;
   });
 
     radiosSuporte.forEach((radio) => {
