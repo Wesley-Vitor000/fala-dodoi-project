@@ -18,6 +18,8 @@ const btnProximo = document.getElementById('btn-proximo');
 const textoTea = document.getElementById('texto-tea');
 const checksTea = document.querySelectorAll('.check-tea');
 const observacoesTea = document.getElementById('observacoesTea');
+const radiosSuporte = document.querySelectorAll('.radio-suporte');
+const reforcadorTea = document.getElementById('reforcadorTea');
 
 document.addEventListener('DOMContentLoaded', () => {
   carregarPaciente();
@@ -41,14 +43,24 @@ function carregarPaciente() {
 function obterDadosTea() {
   const itensSelecionados = [];
 
+  let nivelSuporte = '';
+
   checksTea.forEach((check) => {
     if (check.checked) {
       itensSelecionados.push(check.value);
     }
   });
 
+  radiosSuporte.forEach((radio) => {
+    if (radio.checked) {
+      nivelSuporte = radio.value;
+    }
+  });
+
   return {
     itens: itensSelecionados,
+    nivelSuporte: nivelSuporte,
+    reforcador: reforcadorTea.value.trim(),
     observacoes: observacoesTea.value.trim()
   };
 }
@@ -69,6 +81,12 @@ function carregarTeaSalvo() {
     check.checked = tea.itens.includes(check.value);
   });
 
+    radiosSuporte.forEach((radio) => {
+    radio.checked = tea.nivelSuporte === radio.value;
+  });
+
+  reforcadorTea.value = tea.reforcador || '';
+
   observacoesTea.value = tea.observacoes || '';
 }
 
@@ -78,6 +96,14 @@ function atualizarResumo() {
 
   if (dados.itens.length > 0) {
     partes.push(`Itens marcados: ${dados.itens.join(', ')}`);
+  }
+
+  if (dados.nivelSuporte) {
+    partes.push(`Nível de suporte: ${dados.nivelSuporte}`);
+  }
+
+  if (dados.reforcador) {
+    partes.push(`Reforçador: ${dados.reforcador}`);
   }
 
   if (dados.observacoes) {
@@ -98,6 +124,18 @@ function aplicarEventos() {
       salvarTea();
       atualizarResumo();
     });
+  });
+
+    radiosSuporte.forEach((radio) => {
+    radio.addEventListener('change', () => {
+      salvarTea();
+      atualizarResumo();
+    });
+  });
+
+  reforcadorTea.addEventListener('input', () => {
+    salvarTea();
+    atualizarResumo();
   });
 
   observacoesTea.addEventListener('input', () => {
