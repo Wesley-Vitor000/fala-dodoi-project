@@ -478,4 +478,4 @@ if (btnSairSessao) {
 
 iniciarTela();
 
-setInterval(iniciarTela, 15000);
+setInterval(iniciarTela, 5000);
